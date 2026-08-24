@@ -101,18 +101,31 @@
 
         .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
         
-        .nav-links a:not(.btn-naruci-nav), .f-col a {
+        .nav-links a:not(.btn-naruci-nav) {
             position: relative; text-decoration: none; transition: color 0.3s ease;
             display: inline-block; padding-bottom: 4px; color: var(--text-main); font-weight: 600;
+            font-size: 1.15rem;
         }
-        .nav-links a:not(.btn-naruci-nav)::after, .f-col a::after {
+        .nav-links a:not(.btn-naruci-nav):after {
             content: ''; position: absolute; bottom: 0; left: 15%; width: 0%; height: 2px;
             background: var(--gradient); transition: width 0.35s ease, left 0.35s ease; border-radius: 2px;
         }
-        .nav-links a:not(.btn-naruci-nav):hover::after, .f-col a:hover::after,
+        .nav-links a:not(.btn-naruci-nav):hover::after,
         .nav-links a:not(.btn-naruci-nav).active::after { width: 70%; left: 15%; }
-        .nav-links a:not(.btn-naruci-nav):hover, .f-col a:hover,
+        .nav-links a:not(.btn-naruci-nav):hover,
         .nav-links a:not(.btn-naruci-nav).active { color: var(--pink); text-shadow: 0 0 10px rgba(236, 72, 153, 0.4); }
+
+        .f-col a {
+            position: relative; text-decoration: none; transition: color 0.3s ease;
+            display: inline-block; padding-bottom: 4px; color: var(--text-muted); font-weight: 400;
+            font-size: 0.95rem;
+        }
+        .f-col a:after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0%; height: 2px;
+            background: var(--gradient); transition: width 0.35s ease; border-radius: 2px;
+        }
+        .f-col a:hover::after { width: 70%; }
+        .f-col a:hover { color: var(--pink); text-shadow: 0 0 10px rgba(236, 72, 153, 0.4); }
 
         .btn-naruci-nav {
             background: var(--gradient); padding: 10px 24px !important;
@@ -182,7 +195,7 @@
         .comp-img { height: 180px; background: #111; display: flex; align-items: center; justify-content: center; border-radius: 8px; margin-bottom: 10px; overflow: hidden;}
         .comp-img img { width: 100%; height: 100%; object-fit: cover;}
 
-        .page-view { display: none; padding-top: 140px; min-height: 100vh; animation: fadeIn 0.4s ease forwards; }
+        .page-view { display: none; padding-top: 190px; min-height: 100vh; animation: fadeIn 0.4s ease forwards; }
         .page-view.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -330,12 +343,17 @@
         .g-info p { font-size: 0.9rem; color: var(--text-muted); }
 
         /* --- NOVOSTI STRANICA --- */
-        .news-page-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px; }
-        .news-article-card { background: var(--bg-card); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; text-align: left; cursor: pointer; }
-        .news-article-card:hover { border-color: var(--pink); transform: translateY(-5px); }
-        .news-article-img { width: 100%; height: 230px; }
+        .news-page-grid { display: flex; flex-direction: column; gap: 40px; }
+        .news-article-card { 
+            display: flex; align-items: center; gap: 40px; background: var(--bg-card); 
+            border-radius: 24px; padding: 35px; border: 1px solid rgba(255,255,255,0.08); 
+            transition: transform 0.3s, border-color 0.3s; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.4); 
+        }
+        .news-article-card:nth-child(even) { flex-direction: row-reverse; }
+        .news-article-card:hover { border-color: var(--pink); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(236,72,153,0.15); }
+        .news-article-img { flex: 1; width: 100%; min-height: 280px; max-height: 360px; border-radius: 18px; overflow: hidden; }
         .news-article-img img { width: 100%; height: 100%; object-fit: cover; }
-        .news-article-content { padding: 30px; }
+        .news-article-content { flex: 1; padding: 0; text-align: left; }
         .news-article-date { font-size: 0.85rem; color: var(--pink); font-weight: 600; margin-bottom: 10px; display: block; }
         .news-article-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
         .news-thumb { height: 80px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
@@ -397,34 +415,34 @@
             gap: 38px;
             max-width: 1500px;
             margin: 0 auto 50px;
-            justify-items: stretch;
+            justify-items: center;
             align-items: start;
         }
         .f-col {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+            align-items: center;
+            text-align: center;
             width: 100%;
             min-width: 0;
-            padding-left: 8px;
+            padding-left: 0;
         }
         .f-col h3 {
             color: var(--pink) !important; font-family: 'Montserrat', sans-serif !important;
-            font-size: clamp(1.05rem, 1.6vw, 1.8rem) !important; font-weight: 700 !important;
-            margin-bottom: 12px !important; letter-spacing: 0.2px !important; text-align: left !important;
+            font-size: 1.2rem !important; font-weight: 700 !important;
+            margin-bottom: 12px !important; letter-spacing: 0.2px !important; text-align: center !important;
             line-height: 1.2 !important;
         }
-        .f-col p, .f-col li { color: var(--text-muted); font-size: 0.96rem; margin-bottom: 10px; text-align: left !important; line-height: 1.5; }
+        .f-col p, .f-col li { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; text-align: center !important; line-height: 1.5; font-weight: 400; }
         .f-col li strong, .f-col p strong { color: white; font-weight: 700; }
-        .f-col ul { list-style: none; padding: 0; margin: 0; width: 100%; text-align: left !important; }
-        .f-contact-block { display: flex; flex-direction: column; gap: 8px; }
-        .f-contact-block strong { color: white; font-size: 1.15rem; }
+        .f-col ul { list-style: none; padding: 0; margin: 0; width: 100%; text-align: center !important; display: flex; flex-direction: column; align-items: center; }
+        .f-contact-block { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+        .f-contact-block strong { color: white; font-size: 1.05rem; }
 
         .f-booking-card {
             cursor: pointer; border-radius: 16px; overflow: hidden; width: 100%; max-width: 260px;
             border: 2px solid var(--pink); transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: var(--glow); display: flex; flex-direction: column; align-self: flex-start;
+            box-shadow: var(--glow); display: flex; flex-direction: column; align-self: center;
         }
         .f-booking-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
         .f-booking-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(236, 72, 153, 0.6); }
@@ -438,9 +456,10 @@
 
         @media (max-width: 1024px) { .f-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 900px) {
-            .zigzag-row, .zigzag-row.reverse { flex-direction: column !important; text-align: left; gap: 25px; padding: 25px; }
+            .zigzag-row, .zigzag-row.reverse, .news-article-card, .news-article-card:nth-child(even) { flex-direction: column !important; text-align: left; gap: 25px; padding: 25px; }
             .f-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
             .f-col, .f-col h3, .f-col p, .f-col li, .f-col ul { align-items: center; text-align: center !important; }
+            .news-page-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             nav { padding: 12px 18px; }
@@ -918,11 +937,11 @@
             
             <div class="news-page-grid">
                 <article class="news-article-card" data-article="graphene" onclick="openArticle('graphene')">
-                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1200&auto=format&fit=crop" alt="Graphene keramika"></div>
                     <div class="news-article-content">
                         <span class="news-article-date">15. Kolovoz 2026.</span>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Uvođenje Graphene keramičkih premaza</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Ponosno objavljujemo početak korištenja najnaprednijih grafenskih premaza na tržištu. Ova tehnologija osigurava neprekidnu zaštitu od ptičjeg izmeta, smole, UV zračenja i kemikalija u trajanju do 5 godina.</p>
+                        <h3>Uvođenje Graphene keramičkih premaza</h3>
+                        <p>Ponosno objavljujemo početak korištenja najnaprednijih grafenskih premaza na tržištu. Ova tehnologija osigurava neprekidnu zaštitu od ptičjeg izmeta, smole, UV zračenja i kemikalija u trajanju do 5 godina.</p>
                         <span class="news-read-more">Pročitaj više →</span>
                         <div class="news-article-gallery">
                             <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Nanošenje keramike', 'Nanošenje u kontroliranim uvjetima.', 'Vrhunski sjaj nakon sušenja.')"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=300&auto=format&fit=crop" alt=""></div>
@@ -933,11 +952,11 @@
                 </article>
 
                 <article class="news-article-card" data-article="wash" onclick="openArticle('wash')">
-                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=1200&auto=format&fit=crop" alt="Automatske praonice"></div>
                     <div class="news-article-content">
                         <span class="news-article-date">02. Kolovoz 2026.</span>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Zašto su automatske praonice opasne?</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Četke u klasičnim praonicama sakupljaju pijesak i prljavštinu s tisuća prethodnih automobila te ih poput brusnog papira nanose na vaš lak. Saznajte kako pravilno ručno pranje čuva vrijednost automobila.</p>
+                        <h3>Zašto su automatske praonice opasne?</h3>
+                        <p>Četke u klasičnim praonicama sakupljaju pijesak i prljavštinu s tisuća prethodnih automobila te ih poput brusnog papira nanose na vaš lak. Saznajte kako pravilno ručno pranje čuva vrijednost automobila.</p>
                         <span class="news-read-more">Pročitaj više →</span>
                         <div class="news-article-gallery">
                             <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Metoda 2 kante', 'Korištenje separatora prljavštine.', 'Sigurno ispiranje rukavicom.')"><img src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=300&auto=format&fit=crop" alt=""></div>
