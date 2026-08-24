@@ -137,20 +137,20 @@
 
         /* --- FLOATING GUMBI --- */
         .whatsapp-float {
-            position: fixed; top: 50%; right: 20px; transform: translateY(-50%);
+            position: fixed; bottom: 85px; right: 20px; 
             width: 48px; height: 48px; background-color: var(--whatsapp); color: #FFF;
             border-radius: 50px; text-align: center; box-shadow: 0px 5px 20px rgba(0,0,0,0.6); z-index: 1000;
             display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse 2s infinite;
         }
         .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
         @keyframes pulse {
-            0% { transform: translateY(-50%) scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: translateY(-50%) scale(1.08); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         .back-to-top {
-            position: fixed; bottom: 80px; right: 20px; width: 48px; height: 48px;
+            position: fixed; bottom: 20px; right: 20px; width: 48px; height: 48px;
             background: var(--bg-card); border: 2px solid var(--purple); color: white;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             font-size: 1.3rem; cursor: pointer; z-index: 999; opacity: 0; visibility: hidden;
@@ -401,6 +401,7 @@
 
         .select-wrapper { position: relative; }
         .select-wrapper select { appearance: none; -webkit-appearance: none; width: 100%; padding: 15px 40px 15px 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-size: 1rem; cursor: pointer; }
+        .select-wrapper select option { background-color: var(--bg-dark); color: white; }
         .select-wrapper select:focus { border-color: var(--pink); outline: none; }
         .select-wrapper::after { content: '▼'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--pink); font-size: 0.75rem; pointer-events: none; }
 
@@ -475,7 +476,8 @@
             .ticker-wrap { height: 75px; padding: 6px 12px; }
             .ticker-top-row { font-size: 0.8rem; }
             .ticker-text-item { font-size: 0.9rem; }
-            .whatsapp-float { right: 12px; width: 44px; height: 44px; }
+            .whatsapp-float { right: 12px; width: 44px; height: 44px; bottom: 75px; }
+            .back-to-top { bottom: 15px; right: 12px; width: 44px; height: 44px; }
             .newsletter-section { padding: 28px 18px; }
             .newsletter-form { flex-wrap: nowrap; }
             .newsletter-input { padding: 13px 16px; }
@@ -502,7 +504,7 @@
         <div class="ticker-top-row">
             <div id="live-date">Datum: <span>Učitavanje...</span></div>
             <div id="live-time">Sat: <span>Učitavanje...</span></div>
-            <div id="live-weather">Zagreb: <span>Učitavanje...</span></div>
+            <div id="live-weather">Zagreb: <span>Učitavanje prognoze...</span></div>
         </div>
         <div class="ticker-scroller">
             <div class="ticker-content-box">
@@ -1078,9 +1080,12 @@
                 
                 <div class="c-box">
                     <h3>Brzi upit</h3>
-                    <form onsubmit="alert('Poruka je uspješno poslana!'); event.preventDefault();">
-                        <div class="form-group" style="margin-bottom: 15px;"><input type="text" class="input-pro" placeholder="Vaše ime" required></div>
-                        <div class="form-group" style="margin-bottom: 15px;"><textarea class="input-pro" placeholder="Vaša poruka..." required></textarea></div>
+                    <!-- I ovdje možeš koristiti isti FormSubmit za kontakt formu -->
+                    <form action="https://formsubmit.co/martina.kovacic5@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Novi brzi upit - Tinček Auto-Care">
+                        <div class="form-group" style="margin-bottom: 15px;"><input type="text" name="Ime" class="input-pro" placeholder="Vaše ime" required></div>
+                        <div class="form-group" style="margin-bottom: 15px;"><input type="email" name="email" class="input-pro" placeholder="Vaš email" required></div>
+                        <div class="form-group" style="margin-bottom: 15px;"><textarea name="Poruka" class="input-pro" placeholder="Vaša poruka..." required></textarea></div>
                         <button type="submit" class="btn-primary" style="width: 100%;">Pošalji poruku</button>
                     </form>
                 </div>
@@ -1101,14 +1106,25 @@
             </div>
             
             <div class="form-glass" style="max-width: 750px; margin: 0 auto;">
-                <form onsubmit="alert('Zahtjev za termin uspješno poslan!'); event.preventDefault(); switchView('home');">
+                
+                <form action="https://formsubmit.co/martina.kovacic5@gmail.com" method="POST">
+                    
+                    <!-- Skrivene postavke za FormSubmit (Auto-odgovor klijentu i naslov maila) -->
+                    <input type="hidden" name="_subject" value="Novi zahtjev za termin - Tinček Auto-Care">
+                    <input type="hidden" name="_autoresponse" value="Poštovani, hvala Vam na javljanju! Uspješno smo zaprimili Vaš zahtjev za termin i kontaktirat ćemo Vas u najkraćem roku kako bismo ga potvrdili. Lijep pozdrav, Auto-Care Tinček">
+                    <input type="hidden" name="_template" value="table">
+
                     <div class="form-grid">
                         <div class="form-group"><label>Ime i Prezime *</label><input type="text" name="Ime" class="input-pro" placeholder="Vaše ime" required></div>
-                        <div class="form-group"><label>Broj mobitela *</label><input type="tel" name="Telefon" class="input-pro" placeholder="09X XXX XXXX" required></div>
+                        <div class="form-group"><label>Email adresa (za potvrdu) *</label><input type="email" name="email" class="input-pro" placeholder="vas@email.com" required></div>
                     </div>
                     
                     <div class="form-grid">
+                        <div class="form-group"><label>Broj mobitela *</label><input type="tel" name="Telefon" class="input-pro" placeholder="09X XXX XXXX" required></div>
                         <div class="form-group"><label>Vozilo (Marka i Model) *</label><input type="text" name="Vozilo" class="input-pro" placeholder="Npr. VW Golf" required></div>
+                    </div>
+
+                    <div class="form-grid">
                         <div class="form-group">
                             <label>Usluga *</label>
                             <div class="select-wrapper">
@@ -1120,10 +1136,10 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group"><label>Datum *</label><input type="date" name="Datum" class="input-pro" required></div>
                     </div>
 
                     <div class="form-grid">
-                        <div class="form-group"><label>Datum *</label><input type="date" name="Datum" class="input-pro" required></div>
                         <div class="form-group">
                             <label>Vrijeme *</label>
                             <div class="select-wrapper">
@@ -1135,10 +1151,10 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group"><label>Napomena (opcionalno)</label><textarea name="Napomena" class="input-pro" placeholder="Dodatne napomene..." style="min-height: 50px;"></textarea></div>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 20px;"><label>Napomena (opcionalno)</label><textarea name="Napomena" class="input-pro" placeholder="Dodatne napomene..."></textarea></div>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Pošalji zahtjev za termin</button>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 15px;">Pošalji zahtjev za termin</button>
                 </form>
             </div>
         </section>
@@ -1310,22 +1326,38 @@
 
         function updateDateTime() {
             const now = new Date();
-            const weatherStates = [
-                { icon: '☀️', temp: 26, label: 'Sunčano' },
-                { icon: '🌤️', temp: 25, label: 'Blaga sunce' },
-                { icon: '⛅', temp: 23, label: 'Mjestimično oblačno' },
-                { icon: '🌦️', temp: 21, label: 'Povremeno kiša' },
-                { icon: '🌙', temp: 18, label: 'Vedra noć' }
-            ];
-            const idx = Math.floor((now.getHours() + now.getMinutes() / 60) / 5) % weatherStates.length;
-            const state = weatherStates[idx];
-
             document.getElementById('live-date').innerHTML = `Datum: <span>${now.toLocaleDateString('hr-HR')}</span>`;
             document.getElementById('live-time').innerHTML = `Sat: <span>${now.toLocaleTimeString('hr-HR')}</span>`;
-            document.getElementById('live-weather').innerHTML = `Zagreb: <span>${state.icon} ${state.temp}°C, ${state.label}</span>`;
         }
         setInterval(updateDateTime, 1000);
         updateDateTime();
+
+        // Prava vremenska prognoza za Zagreb koristeći besplatni Open-Meteo API
+        async function fetchWeather() {
+            try {
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=45.8144&longitude=15.978&current_weather=true');
+                const data = await res.json();
+                const temp = Math.round(data.current_weather.temperature);
+                const code = data.current_weather.weathercode;
+                const isDay = data.current_weather.is_day;
+                
+                let icon = '☀️';
+                let label = 'Vedro';
+                
+                if (code === 0) { icon = isDay ? '☀️' : '🌙'; label = isDay ? 'Sunčano' : 'Vedra noć'; }
+                else if (code >= 1 && code <= 3) { icon = isDay ? '⛅' : '☁️'; label = 'Oblačno'; }
+                else if (code >= 45 && code <= 48) { icon = '🌫️'; label = 'Magla'; }
+                else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) { icon = '🌧️'; label = 'Kiša'; }
+                else if ((code >= 71 && code <= 77) || (code >= 85 && code <= 86)) { icon = '❄️'; label = 'Snijeg'; }
+                else if (code >= 95 && code <= 99) { icon = '⛈️'; label = 'Oluja'; }
+
+                document.getElementById('live-weather').innerHTML = `Zagreb: <span>${icon} ${temp}°C, ${label}</span>`;
+            } catch (e) {
+                document.getElementById('live-weather').innerHTML = `Zagreb: <span>N/A</span>`;
+            }
+        }
+        fetchWeather();
+        setInterval(fetchWeather, 1800000); // Osvježava vrijeme svakih 30 minuta
 
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('backToTopBtn');
