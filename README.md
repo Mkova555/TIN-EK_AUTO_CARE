@@ -1,2 +1,2 @@
-# TINCEK_AUTO_CARE
+# Tincek-Auto_Care
 Kemijsko čišćenje vozila
