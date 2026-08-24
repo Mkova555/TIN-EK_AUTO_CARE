@@ -106,6 +106,33 @@
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.062)) drop-shadow(0 0 22px rgba(255, 255, 255, 0.055));
             -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.082)) drop-shadow(0 0 22px rgba(255, 255, 255, 0.034));
         }
+
+        .text-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            line-height: 1;
+        }
+        .logo-tincek {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+        .logo-ac {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: clamp(0.75rem, 2vw, 0.95rem);
+            color: var(--pink);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
         .slogan { display: none; }
 
         @media (max-width: 768px) {
@@ -430,7 +457,7 @@
         }
         .f-grid {
             display: grid;
-            grid-template-columns: 1.4fr 1.3fr 1.6fr 1.1fr 1fr;
+            grid-template-columns: 1fr 1.3fr 1.4fr 1fr 1.2fr;
             gap: 38px;
             max-width: 1500px;
             margin: 0 auto 50px;
@@ -876,8 +903,10 @@
             <div class="newsletter-section">
                 <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Prijavite se na naš Newsletter</h3>
                 <p style="color: var(--text-muted); font-size: 0.95rem;">Saznajte prvi za popuste i specijalne ponude u vašem inboxu.</p>
-                <form class="newsletter-form" onsubmit="alert('Uspješno ste prijavljeni!'); event.preventDefault();">
-                    <input type="email" class="newsletter-input" placeholder="Vaša email adresa..." required>
+                <form class="newsletter-form" action="https://formsubmit.co/martina.kovacic5@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Nova prijava na Newsletter - Tinček Auto-Care">
+                    <input type="hidden" name="_autoresponse" value="Hvala na prijavi na naš Newsletter! Uskoro ćete početi primati naše novosti i ponude.">
+                    <input type="email" name="Email" class="newsletter-input" placeholder="Vaša email adresa..." required>
                     <button type="submit" class="btn-primary" style="padding: 15px 28px; white-space: nowrap;">Prijava</button>
                 </form>
             </div>
@@ -1086,6 +1115,14 @@
                         </p>
                     </div>
 
+                    <div class="c-item" style="display:block; margin-bottom: 24px;">
+                        <ul style="margin:0; padding: 0; color: var(--text-muted); line-height:1.8; list-style: none; font-size: 1.02rem;">
+                            <li><strong style="color:white;">A:</strong> Josipa Slavenskog 12, 10000 Zagreb</li>
+                            <li><strong style="color:white;">T:</strong> +385 9X XXX XXXX</li>
+                            <li><strong style="color:white;">M:</strong> info@autocaretincek.hr</li>
+                        </ul>
+                    </div>
+
                     <div class="c-item" style="display:block; margin-top: 8px; margin-bottom: 0;">
                         <h4 style="margin:0 0 10px; color: var(--pink); font-size: 1.35rem; font-weight: 700;">Radno Vrijeme</h4>
                         <ul style="margin:0; padding-left: 20px; color: var(--text-muted); line-height:1.8; list-style: disc; font-size: 1.02rem;">
@@ -1101,6 +1138,8 @@
                     <!-- I ovdje možeš koristiti isti FormSubmit za kontakt formu -->
                     <form action="https://formsubmit.co/martina.kovacic5@gmail.com" method="POST">
                         <input type="hidden" name="_subject" value="Novi brzi upit - Tinček Auto-Care">
+                        <input type="hidden" name="_autoresponse" value="Poštovani, hvala Vam na upitu! Uspješno smo zaprimili Vašu poruku i javit ćemo se u najkraćem mogućem roku. Vaš Auto-Care Tinček tim.">
+                        <input type="hidden" name="_template" value="table">
                         <div class="form-group" style="margin-bottom: 15px;"><input type="text" name="Ime" class="input-pro" placeholder="Vaše ime" required></div>
                         <div class="form-group" style="margin-bottom: 15px;"><input type="email" name="email" class="input-pro" placeholder="Vaš email" required></div>
                         <div class="form-group" style="margin-bottom: 15px;"><textarea name="Poruka" class="input-pro" placeholder="Vaša poruka..." required></textarea></div>
@@ -1182,17 +1221,28 @@
     <footer>
         <div class="f-grid">
             <div class="f-col">
-                <h3>Kontakt</h3>
-                <p><strong>Adresa:</strong> Josipa Slavenskog 12, 10000 Zagreb</p>
-                <p><strong>Telefon:</strong> +385 9X XXX XXXX</p>
-                <p><strong>Mail:</strong> info@autocaretincek.hr</p>
+                <h3>Izbornik</h3>
+                <ul>
+                    <li><a onclick="switchView('home')">Početna</a></li>
+                    <li><a onclick="switchView('services')">Usluge i Cjenik</a></li>
+                    <li><a onclick="switchView('news')">Novosti</a></li>
+                    <li><a onclick="switchView('gallery')">Radovi</a></li>
+                    <li><a onclick="switchView('testimonials')">Recenzije</a></li>
+                    <li><a onclick="switchView('contact')">Kontakt</a></li>
+                </ul>
             </div>
+
             <div class="f-col">
-                <h3>Radno Vrijeme</h3>
-                <p><strong>Pon - Pet:</strong> 08:00 - 18:00</p>
-                <p><strong>Subota:</strong> 08:00 - 14:00</p>
-                <p><strong>Nedjelja:</strong> Zatvoreno</p>
+                <h3>Kontakt</h3>
+                <p><strong>A:</strong> Josipa Slavenskog 12, 10000 Zagreb</p>
+                <p><strong>T:</strong> +385 9X XXX XXXX</p>
+                <p style="margin-bottom: 15px;"><strong>M:</strong> info@autocaretincek.hr</p>
+                
+                <p><strong>P-P:</strong> 08:00 - 18:00</p>
+                <p><strong>S:</strong> 08:00 - 14:00</p>
+                <p><strong>N:</strong> Zatvoreno</p>
             </div>
+
             <div class="f-col">
                 <h3>Usluge i Cjenik</h3>
                 <ul>
@@ -1203,6 +1253,21 @@
                     <li><a onclick="switchView('services')">Poliranje Farova</a></li>
                 </ul>
             </div>
+
+            <div class="f-col">
+                <h3>&nbsp;</h3>
+                <div style="width: 100%; max-width: 160px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding-top: 5px; cursor: pointer;" onclick="switchView('home')">
+                    <div class="text-logo" style="align-items: center; text-align: center;">
+                        <span class="logo-tincek" style="font-size: 1.6rem;">TINČEK</span>
+                        <span class="logo-ac" style="font-size: 0.85rem; letter-spacing: 2px;">AUTO-CARE</span>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+                    <strong style="color: white; display: block; margin-bottom: 4px; font-size: 0.95rem;">Auto-Care Tinček</strong>
+                    Vaš partner u sjaju Vašeg vozila! Vrhunska njega, profesionalni alati i posvećenost detaljima bez kompromisa.
+                </p>
+            </div>
+
             <div class="f-col">
                 <h3>Naruči se</h3>
                 <div class="f-booking-card" onclick="switchView('booking')" title="Klikni i naruči se odmah">
@@ -1211,17 +1276,6 @@
                         Naruči se odmah →
                     </div>
                 </div>
-            </div>
-            <div class="f-col">
-                <h3>Izbornik</h3>
-                <ul>
-                    <li><a onclick="switchView('home')">Početna</a></li>
-                    <li><a onclick="switchView('services')">Usluge i Cjenik</a></li>
-                    <li><a onclick="switchView('news')">Novosti</a></li>
-                    <li><a onclick="switchView('gallery')">Radovi</a></li>
-                    <li><a onclick="switchView('testimonials')">Recenzije</a></li>
-                    <li><a onclick="switchView('contact')">Kontakt</a></li>
-                </ul>
             </div>
         </div>
         
@@ -1253,23 +1307,23 @@
             graphene: {
                 title: 'Uvođenje Graphene keramičkih premaza',
                 date: '15. Kolovoz 2026.',
-                image: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1200&auto=format&fit=crop',
+                image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200&auto=format&fit=crop',
                 intro: 'Ponosno objavljujemo početak korištenja najnaprednijih grafenskih premaza na tržištu. Ova tehnologija pruža zaštitu od UV zračenja, kemikalija, smole i ptičjeg izmeta u trajanju do 5 godina.',
                 gallery: [
-                    'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=500&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=500&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=500&auto=format&fit=crop'
+                    'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=500&auto=format&fit=crop'
                 ]
             },
             wash: {
                 title: 'Zašto su automatske praonice opasne?',
                 date: '02. Kolovoz 2026.',
-                image: 'https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=1200&auto=format&fit=crop',
+                image: 'https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=1200&auto=format&fit=crop',
                 intro: 'Četke u klasičnim praonicama sakupljaju pijesak i prljavštinu s tisuća prethodnih automobila te ih poput brusnog papira nanose na vaš lak. Saznajte kako pravilno ručno pranje čuva vrijednost automobila.',
                 gallery: [
-                    'https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=500&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=500&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=500&auto=format&fit=crop'
+                    'https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=500&auto=format&fit=crop'
                 ]
             }
         };
@@ -1303,16 +1357,16 @@
         }
 
         const slidersData = {
-            'why1': { images: ["https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'why2': { images: ["https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'why3': { images: ["https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'why4': { images: ["https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'proc1': { images: ["https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'proc2': { images: ["https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'proc3': { images: ["https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'proc4': { images: ["https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'newsSlider': { images: ["https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop"], index: 0 },
-            'worksSlider': { images: ["https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop"], index: 0 }
+            'why1': { images: ["https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'why2': { images: ["https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'why3': { images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'why4': { images: ["https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc1': { images: ["https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc2': { images: ["https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc3': { images: ["https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc4': { images: ["https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'newsSlider': { images: ["https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'worksSlider': { images: ["https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=800&auto=format&fit=crop"], index: 0 }
         };
 
         function changeSlide(sliderId, direction) {
