@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tinček Auto-Care | Premium Detailing</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#09090b">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #09090b;
+            --bg-card: rgba(22, 22, 28, 0.9);
+            --text-main: #ffffff;
+            --text-muted: #d4d4d8;
+            --purple: #a855f7;
+            --pink: #ec4899;
+            --gradient: linear-gradient(135deg, var(--purple), var(--pink));
+            --glow: 0 0 30px rgba(236, 72, 153, 0.45);
+            --whatsapp: #25D366;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+        body, html { overflow-x: hidden; width: 100%; max-width: 100vw; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+
+        .text-gradient {
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* --- GORNJA TRAKA --- */
+        .ticker-wrap {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: linear-gradient(180deg, #18181b, #09090b);
+            border-bottom: 2px solid rgba(168, 85, 247, 0.4);
+            color: white; height: 70px; display: flex; flex-direction: column; justify-content: center;
+            z-index: 1001; padding: 6px 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+        .ticker-top-row {
+            display: flex; justify-content: space-between; align-items: center; gap: 18px;
+            font-size: 0.95rem; font-weight: 600; color: var(--pink); border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 4px;
+        }
+        .ticker-top-row > div:last-child { margin-left: auto; text-align: right; }
+        .ticker-top-row span { color: #fff; font-weight: 700; }
+
+        .ticker-scroller { overflow: hidden; width: 100%; position: relative; height: 30px; display: flex; align-items: center; }
+        .ticker-content-box { display: flex; white-space: nowrap; animation: continuousTicker 20s linear infinite; }
+        .ticker-text-item { font-size: 1.05rem; font-weight: 700; color: #f472b6; text-transform: uppercase; letter-spacing: 1px; padding-right: 60px; }
+        @keyframes continuousTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- NAVIGACIJA --- */
+        nav {
+            position: fixed; top: 70px; left: 0; width: 100%; padding: 18px 35px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(9, 9, 11, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            min-width: 0;
+            margin-right: 10px;
+        }
+        .logo-mark {
+            display: block;
+            width: min(270px, 22vw);
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.062)) drop-shadow(0 0 22px rgba(255, 255, 255, 0.055));
+            -webkit-filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.082)) drop-shadow(0 0 22px rgba(255, 255, 255, 0.034));
+        }
+        .slogan { display: none; }
+
+        @media (max-width: 768px) {
+            .logo-mark {
+                width: min(160px, 42vw);
+            }
+        }
+        
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .menu-toggle span { width: 30px; height: 3px; background-color: #fff; border-radius: 2px; }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; flex-wrap: wrap; }
+        
+        .nav-links a:not(.btn-naruci-nav), .f-col a {
+            position: relative; text-decoration: none; transition: color 0.3s ease;
+            display: inline-block; padding-bottom: 4px; color: var(--text-main); font-weight: 600;
+        }
+        .nav-links a:not(.btn-naruci-nav)::after, .f-col a::after {
+            content: ''; position: absolute; bottom: 0; left: 15%; width: 0%; height: 2px;
+            background: var(--gradient); transition: width 0.35s ease, left 0.35s ease; border-radius: 2px;
+        }
+        .nav-links a:not(.btn-naruci-nav):hover::after, .f-col a:hover::after,
+        .nav-links a:not(.btn-naruci-nav).active::after { width: 70%; left: 15%; }
+        .nav-links a:not(.btn-naruci-nav):hover, .f-col a:hover,
+        .nav-links a:not(.btn-naruci-nav).active { color: var(--pink); text-shadow: 0 0 10px rgba(236, 72, 153, 0.4); }
+
+        .btn-naruci-nav {
+            background: var(--gradient); padding: 10px 24px !important;
+            border-radius: 30px; font-weight: 700 !important; color: white !important;
+            box-shadow: var(--glow); border: none; text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-naruci-nav:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.6); }
+
+        /* --- FLOATING GUMBI --- */
+        .whatsapp-float {
+            position: fixed; top: 50%; right: 20px; transform: translateY(-50%);
+            width: 48px; height: 48px; background-color: var(--whatsapp); color: #FFF;
+            border-radius: 50px; text-align: center; box-shadow: 0px 5px 20px rgba(0,0,0,0.6); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse 2s infinite;
+        }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+        @keyframes pulse {
+            0% { transform: translateY(-50%) scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: translateY(-50%) scale(1.08); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+            100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .back-to-top {
+            position: fixed; bottom: 80px; right: 20px; width: 48px; height: 48px;
+            background: var(--bg-card); border: 2px solid var(--purple); color: white;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; cursor: pointer; z-index: 999; opacity: 0; visibility: hidden;
+            transition: 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--gradient); border-color: transparent; transform: translateY(-3px); }
+
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-content {
+            background: var(--bg-card); backdrop-filter: blur(15px); width: 100%; max-width: 500px;
+            border-radius: 20px; padding: 35px 25px; text-align: center; position: relative;
+            border: 2px solid var(--pink); box-shadow: 0 0 35px rgba(236,72,153,0.24); animation: slideDown 0.4s ease;
+        }
+        @keyframes slideDown { from { transform: translateY(-40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-modal { position: absolute; top: 12px; right: 16px; font-size: 1.9rem; color: var(--text-muted); cursor: pointer; line-height: 1; }
+        .badge-sale { background: var(--gradient); color: white; padding: 10px 20px; border-radius: 999px; font-weight: 800; display: inline-block; margin-bottom: 18px; font-size: clamp(1.35rem, 2vw, 2rem); letter-spacing: 0.5px; text-transform: uppercase; }
+        .modal-visual { width: 100%; height: 180px; margin: 0 auto 18px; border-radius: 18px; overflow: hidden; border: 2px solid rgba(236,72,153,0.3); box-shadow: 0 12px 36px rgba(236,72,153,0.12); }
+        .modal-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .modal-content h2 { font-size: clamp(2rem, 3vw, 2.8rem); margin-bottom: 8px; }
+        .modal-content p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 18px; }
+        .modal-price { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; }
+        .modal-price strong { font-size: 2rem; font-family: 'Montserrat', sans-serif; color: var(--pink); }
+        .modal-price del { color: var(--text-muted); font-size: 1.1rem; }
+        .modal-cta { width: 100%; border: none; background: var(--gradient); color: white; border-radius: 16px; padding: 16px 20px; font-size: 1rem; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 12px 30px rgba(236,72,153,0.28); }
+
+        .lightbox-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92); z-index: 3000; justify-content: center; align-items: center; padding: 20px;
+        }
+        .lightbox-container {
+            background: var(--bg-card); max-width: 750px; width: 100%; border-radius: 20px;
+            padding: 30px; position: relative; border: 1px solid rgba(255,255,255,0.1); max-height: 90vh; overflow-y: auto;
+        }
+        .close-lightbox { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: white; cursor: pointer; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        @media (max-width: 600px) { .comparison-grid { grid-template-columns: 1fr; } }
+        .comp-box { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.05);}
+        .comp-img { height: 180px; background: #111; display: flex; align-items: center; justify-content: center; border-radius: 8px; margin-bottom: 10px; overflow: hidden;}
+        .comp-img img { width: 100%; height: 100%; object-fit: cover;}
+
+        .page-view { display: none; padding-top: 140px; min-height: 100vh; animation: fadeIn 0.4s ease forwards; }
+        .page-view.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        section { padding: 60px 5%; max-width: 1350px; margin: 0 auto; width: 100%; }
+
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: clamp(2.2rem, 4vw, 3rem); margin-bottom: 12px; }
+        .section-header p { color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1.1rem; }
+
+        .btn-primary {
+            background: var(--gradient); color: white; border: none; padding: 15px 32px;
+            border-radius: 30px; font-weight: 600; font-size: 1rem; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: var(--glow); text-transform: uppercase; letter-spacing: 1px;
+            display: inline-block; text-align: center; text-decoration: none;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(236, 72, 153, 0.6); }
+
+        /* --- HERO OD RUBA DO RUBA (100VW) --- */
+        .hero {
+            width: 100%;
+            max-width: none;
+            position: relative;
+            left: 0;
+            right: 0;
+            margin: 0;
+            min-height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 8%;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(9, 9, 11, 0.75), rgba(9, 9, 11, 0.92)),
+                url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2200&auto=format&fit=crop') center center / cover no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.15; margin-bottom: 25px; font-weight: 800; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 700px; }
+
+        /* --- CIK-CAK REDOVI S FOTO ALBUMIMA --- */
+        .zigzag-container { display: flex; flex-direction: column; gap: 40px; }
+        .zigzag-row {
+            display: flex; align-items: center; gap: 40px; background: var(--bg-card);
+            border-radius: 24px; padding: 35px; border: 1px solid rgba(255,255,255,0.08);
+            transition: transform 0.3s, border-color 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .zigzag-row:hover { border-color: var(--pink); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(236,72,153,0.15); }
+        .zigzag-row.reverse { flex-direction: row-reverse; }
+        .zigzag-content { flex: 1; text-align: left; }
+        .zigzag-media { flex: 1; width: 100%; min-height: 280px; max-height: 360px; border-radius: 18px; overflow: hidden; position: relative; }
+
+        /* ALBUM S PREBACIVANJEM (STRELICE) */
+        .slider-box {
+            position: relative; width: 100%; height: 320px; border-radius: 18px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.15); box-shadow: var(--glow); background: #000;
+        }
+        .slider-box img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.4s ease-in-out; }
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7); color: white; border: 1px solid rgba(255,255,255,0.3);
+            width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.3rem;
+            display: flex; align-items: center; justify-content: center; transition: 0.3s; z-index: 10;
+        }
+        .slider-btn:hover { background: var(--gradient); border-color: transparent; scale: 1.08; }
+        .slider-btn.prev { left: 15px; }
+        .slider-btn.next { right: 15px; }
+        .slider-dots {
+            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 10;
+        }
+        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--pink); width: 22px; border-radius: 10px; }
+
+        .process-num-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; background: var(--gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 10px; }
+        .tag { background: rgba(236, 72, 153, 0.15); color: var(--pink); padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; display: inline-block; margin-bottom: 15px;}
+
+        /* --- NEWSLETTER (Uži, duži, input i gumb u 1 redu) --- */
+        .newsletter-section {
+            background: var(--bg-card);
+            border: 1px solid rgba(236, 72, 153, 0.35);
+            border-radius: 24px;
+            padding: 35px 28px;
+            text-align: center;
+            width: 100%;
+            max-width: 100%;
+            margin: 60px auto 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        }
+        .newsletter-form {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 100%;
+            margin: 25px auto 0;
+            gap: 12px;
+            flex-wrap: nowrap;
+        }
+        .newsletter-input {
+            flex: 1 1 auto;
+            min-width: 0;
+            padding: 15px 22px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .newsletter-input:focus { outline: none; border-color: var(--pink); }
+        .newsletter-form .btn-primary {
+            flex-shrink: 0;
+            padding: 15px 26px;
+            white-space: nowrap;
+        }
+
+        /* --- CJENIK / USLUGE --- */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .price-card { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: 0.3s; }
+        .price-card:hover { border-color: var(--pink); box-shadow: 0 15px 40px rgba(236, 72, 153, 0.2); transform: translateY(-5px); }
+        .p-img { width: 100%; height: 220px; position: relative; }
+        .p-img img { width: 100%; height: 100%; object-fit: cover; }
+        .p-badge { position: absolute; top: 15px; right: 15px; background: var(--gradient); padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; box-shadow: var(--glow); }
+        .p-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; text-align: left; }
+        .p-price { font-size: 2.3rem; font-weight: 800; color: var(--pink); margin-bottom: 12px; line-height: 1; }
+        .p-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; line-height: 1.5; }
+        .p-list { list-style: none; margin-bottom: 25px; flex-grow: 1; }
+        .p-list li { margin-bottom: 10px; font-size: 0.95rem; color: #e4e4e7; display: flex; align-items: flex-start; gap: 10px; }
+        .p-list li::before { content: '✓'; color: var(--purple); font-weight: bold; }
+
+        /* --- GALERIJA --- */
+        .filter-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+        .filter-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 10px 24px; border-radius: 30px; cursor: pointer; transition: 0.3s; font-size: 0.95rem; font-weight: 600; }
+        .filter-btn.active, .filter-btn:hover { background: var(--gradient); border-color: transparent; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .g-item { border-radius: 18px; overflow: hidden; cursor: pointer; position: relative; border: 1px solid rgba(255,255,255,0.08); background: var(--bg-card); transition: 0.3s; }
+        .g-item:hover { transform: translateY(-5px); border-color: var(--pink); box-shadow: 0 10px 30px rgba(236,72,153,0.2); }
+        .g-img { width: 100%; height: 250px; }
+        .g-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .g-item:hover .g-img img { transform: scale(1.06); }
+        .g-info { padding: 20px; text-align: center; }
+        .g-info h4 { color: var(--pink); font-size: 1.15rem; margin-bottom: 6px; }
+        .g-info p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- NOVOSTI STRANICA --- */
+        .news-page-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px; }
+        .news-article-card { background: var(--bg-card); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; text-align: left; cursor: pointer; }
+        .news-article-card:hover { border-color: var(--pink); transform: translateY(-5px); }
+        .news-article-img { width: 100%; height: 230px; }
+        .news-article-img img { width: 100%; height: 100%; object-fit: cover; }
+        .news-article-content { padding: 30px; }
+        .news-article-date { font-size: 0.85rem; color: var(--pink); font-weight: 600; margin-bottom: 10px; display: block; }
+        .news-article-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .news-thumb { height: 80px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
+        .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .news-thumb:hover img { transform: scale(1.1); }
+        .news-read-more { margin-top: 18px; display: inline-block; color: var(--pink); font-weight: 700; letter-spacing: 0.5px; }
+        .news-detail-wrap { max-width: 1200px; margin: 0 auto; }
+        .news-detail-card { background: var(--bg-card); border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+        .news-detail-image { width: 100%; height: 420px; }
+        .news-detail-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .news-detail-content { padding: 30px 35px 10px; }
+        .news-detail-content h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 8px; }
+        .news-detail-content p { color: var(--text-muted); line-height: 1.7; }
+        .news-detail-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 0 35px 35px; }
+        .news-detail-gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+
+        /* --- RECENZIJE --- */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .testimonial-card { background: var(--bg-card); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        .t-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .t-avatar { width: 45px; height: 45px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; }
+        .stars { color: #f1c40f; font-size: 0.9rem; }
+        .t-img { width: 100%; height: 160px; border-radius: 8px; margin-top: 12px; overflow: hidden; }
+        .t-img img { width: 100%; height: 100%; object-fit: cover; }
+        .review-box { max-width: 650px; margin: 0 auto; background: var(--bg-card); padding: 35px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); text-align: left; }
+
+        /* --- KONTAKT STRANICA --- */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+        @media(max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+        .c-box { background: var(--bg-card); padding: 35px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); text-align: left; }
+        .c-box h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--pink); }
+        .c-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; color: var(--text-muted); font-size: 1rem; line-height: 1.5; }
+        .c-item strong { font-size: 1rem; color: white; }
+        .map-box { width: 100%; height: 260px; background: rgba(22, 22, 28, 0.9); border-radius: 16px; margin-top: 35px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); }
+        .map-box iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.1) brightness(0.9); }
+
+        /* --- FORME --- */
+        .form-glass { background: var(--bg-card); backdrop-filter: blur(10px); padding: 45px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); text-align: left; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        @media(max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .input-pro { width: 100%; padding: 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-family: inherit; font-size: 1rem; transition: 0.3s; }
+        .input-pro:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 2px rgba(236,72,153,0.2); }
+        textarea.input-pro { min-height: 120px; resize: vertical; }
+
+        .select-wrapper { position: relative; }
+        .select-wrapper select { appearance: none; -webkit-appearance: none; width: 100%; padding: 15px 40px 15px 15px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-size: 1rem; cursor: pointer; }
+        .select-wrapper select:focus { border-color: var(--pink); outline: none; }
+        .select-wrapper::after { content: '▼'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--pink); font-size: 0.75rem; pointer-events: none; }
+
+        /* --- FOOTER (U milimetar poravnat, centriran s 5 stupaca) --- */
+        footer {
+            background: #000; border-top: 2px solid var(--purple);
+            padding: 70px 5% 40px; margin-top: 80px; text-align: center;
+        }
+        .f-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1.3fr 1.6fr 1.1fr 1fr;
+            gap: 38px;
+            max-width: 1500px;
+            margin: 0 auto 50px;
+            justify-items: stretch;
+            align-items: start;
+        }
+        .f-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            width: 100%;
+            min-width: 0;
+            padding-left: 8px;
+        }
+        .f-col h3 {
+            color: var(--pink) !important; font-family: 'Montserrat', sans-serif !important;
+            font-size: clamp(1.05rem, 1.6vw, 1.8rem) !important; font-weight: 700 !important;
+            margin-bottom: 12px !important; letter-spacing: 0.2px !important; text-align: left !important;
+            line-height: 1.2 !important;
+        }
+        .f-col p, .f-col li { color: var(--text-muted); font-size: 0.96rem; margin-bottom: 10px; text-align: left !important; line-height: 1.5; }
+        .f-col li strong, .f-col p strong { color: white; font-weight: 700; }
+        .f-col ul { list-style: none; padding: 0; margin: 0; width: 100%; text-align: left !important; }
+        .f-contact-block { display: flex; flex-direction: column; gap: 8px; }
+        .f-contact-block strong { color: white; font-size: 1.15rem; }
+
+        .f-booking-card {
+            cursor: pointer; border-radius: 16px; overflow: hidden; width: 100%; max-width: 260px;
+            border: 2px solid var(--pink); transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--glow); display: flex; flex-direction: column; align-self: flex-start;
+        }
+        .f-booking-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
+        .f-booking-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(236, 72, 153, 0.6); }
+
+        .f-bottom {
+            max-width: 1400px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+        }
+        .counter-box { background: rgba(255,255,255,0.06); padding: 10px 22px; border-radius: 30px; display: flex; align-items: center; gap: 12px; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.15); }
+        .counter-box strong { font-family: 'Montserrat'; font-size: 1.2rem; color: var(--pink); letter-spacing: 3px; }
+
+        @media (max-width: 1024px) { .f-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) {
+            .zigzag-row, .zigzag-row.reverse { flex-direction: column !important; text-align: left; gap: 25px; padding: 25px; }
+            .f-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+            .f-col, .f-col h3, .f-col p, .f-col li, .f-col ul { align-items: center; text-align: center !important; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 12px 18px; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: fixed; top: 80px; left: -100%; flex-direction: column; width: 100%;
+                background: rgba(9, 9, 11, 0.98); padding: 30px 20px; transition: 0.4s;
+                border-bottom: 2px solid var(--purple); gap: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            }
+            .nav-links.active { left: 0; }
+            section { padding: 40px 15px; }
+            .f-bottom { flex-direction: column; text-align: center; justify-content: center; }
+            .ticker-wrap { height: 75px; padding: 6px 12px; }
+            .ticker-top-row { font-size: 0.8rem; }
+            .ticker-text-item { font-size: 0.9rem; }
+            .whatsapp-float { right: 12px; width: 44px; height: 44px; }
+            .newsletter-section { padding: 28px 18px; }
+            .newsletter-form { flex-wrap: nowrap; }
+            .newsletter-input { padding: 13px 16px; }
+            .newsletter-form .btn-primary { padding: 13px 18px; }
+        }
+        @media (max-width: 560px) {
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .newsletter-input,
+            .newsletter-form .btn-primary {
+                width: 100%;
+            }
+            .newsletter-form .btn-primary {
+                padding: 14px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker-top-row">
+            <div id="live-date">Datum: <span>Učitavanje...</span></div>
+            <div id="live-time">Sat: <span>Učitavanje...</span></div>
+            <div id="live-weather">Zagreb: <span>Učitavanje...</span></div>
+        </div>
+        <div class="ticker-scroller">
+            <div class="ticker-content-box">
+                <div class="ticker-text-item">🔥 TOP PONUDA: KEMIJSKO ČIŠĆENJE 90€ UZ BESPLATAN PREMAZ STAKLA! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 🛡️ UVELI SMO NAPREDNU GRAPHENE KERAMIKU! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 📞 NAZOVITE NAS ODMAH ZA SLOBODAN TERMIN!</div>
+                <div class="ticker-text-item">🔥 TOP PONUDA: KEMIJSKO ČIŠĆENJE 90€ UZ BESPLATAN PREMAZ STAKLA! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 🛡️ UVELI SMO NAPREDNU GRAPHENE KERAMIKU! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 📞 NAZOVITE NAS ODMAH ZA SLOBODAN TERMIN!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGACIJA -->
+    <nav>
+        <div class="logo" onclick="switchView('home')" aria-label="Auto-Care Tinček logo">
+            <img class="logo-mark" src="logo_tincek-ac.png" alt="Auto-Care Tinček logo" />
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a onclick="switchView('home')" class="active" id="link-home">Početna</a></li>
+            <li><a onclick="switchView('services')" id="link-services">Usluge i Cjenik</a></li>
+            <li><a onclick="switchView('news')" id="link-news">Novosti</a></li>
+            <li><a onclick="switchView('gallery')" id="link-gallery">Radovi</a></li>
+            <li><a onclick="switchView('testimonials')" id="link-testimonials">Recenzije</a></li>
+            <li><a onclick="switchView('contact')" id="link-contact">Kontakt</a></li>
+            <li><a onclick="switchView('booking')" class="btn-naruci-nav" id="link-booking">Naruči se</a></li>
+        </ul>
+    </nav>
+
+    <a href="https://wa.me/385900000000" class="whatsapp-float" title="WhatsApp kontakt">
+        <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+    </a>
+
+    <div class="back-to-top" id="backToTopBtn" onclick="scrollToTop()" title="Povratak na vrh">↑</div>
+
+    <div class="modal-overlay" id="top-ponuda-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <div class="badge-sale">Top ponuda</div>
+            <div class="modal-visual">
+                <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=900&auto=format&fit=crop" alt="Detaljni auto wash">
+            </div>
+            <h2>Kompletno kemijsko čišćenje</h2>
+            <p>Uz svako potpuno detaljno čišćenje dobivate i besplatan keramički premaz za stakla.</p>
+            <div class="modal-price">
+                <strong>90€</strong>
+                <del>120€</del>
+            </div>
+            <button class="modal-cta" id="btn-prihvati-ponudu">Zakaži termin</button>
+        </div>
+    </div>
+
+    <div class="lightbox-overlay" id="lightbox-modal">
+        <div class="lightbox-container">
+            <span class="close-lightbox" id="close-lightbox">&times;</span>
+            <h3 id="lb-title" style="color: var(--pink); margin-bottom: 5px; text-align: center; font-size: 1.4rem;">Usporedba</h3>
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Stanje prije i poslije tretmana</p>
+            
+            <div class="comparison-grid">
+                <div class="comp-box">
+                    <strong style="color: #ef4444; display:block; margin-bottom:8px; font-size:1rem;">PRIJE</strong>
+                    <div class="comp-img" id="lb-img-before"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <p id="lb-desc-before" style="font-size: 0.85rem; color: var(--text-muted);">Opis stanja prije...</p>
+                </div>
+                <div class="comp-box">
+                    <strong style="color: #22c55e; display:block; margin-bottom:8px; font-size:1rem;">POSLIJE</strong>
+                    <div class="comp-img" id="lb-img-after"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <p id="lb-desc-after" style="font-size: 0.85rem; color: var(--text-muted);">Opis stanja nakon...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 1. POČETNA ==================== -->
+    <div id="view-home" class="page-view active">
+        <section class="hero">
+            <div style="max-width: 750px; z-index: 1;">
+                <h1>Vratite sjaj <br><span class="text-gradient">vašem vozilu.</span></h1>
+                <p>Vrhunsko iskustvo detailinga za klijente koji traže savršenstvo i dugotrajnu zaštitu.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button class="btn-primary" onclick="switchView('services')">Pregledaj Usluge</button>
+                    <button class="btn-primary" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); box-shadow: none;" onclick="switchView('booking')">Zakaži Termin</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Zašto odabrati <span class="text-gradient">baš nas?</span></h2>
+                <p>Predanost detaljima, vrhunski certifikati i zadovoljstvo svakog klijenta naš su prioritet.</p>
+            </div>
+            
+            <div class="zigzag-container">
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <span class="tag">01. PREMIJUM KVALITETA</span>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--purple);">Vrhunska Auto-Kozmetika</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;">Koristimo isključivo profesionalne, certificirane proizvode i keramičke premaze renomiranih svjetskih brandova.</p>
+                        <ul style="color: #e4e4e7; font-size: 0.95rem; list-style: none; line-height: 1.8;">
+                            <li>✓ PH neutralni šamponi sigurni za sve vrste laka</li>
+                            <li>✓ Certificirani grafenski i keramički premazi</li>
+                            <li>✓ Bez štetnih agresivnih kemikalija</li>
+                        </ul>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('why1', -1)">❮</button>
+                            <img id="why1-img" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('why1', 1)">❯</button>
+                            <div class="slider-dots" id="why1-dots">
+                                <span class="dot active" onclick="goToSlide('why1', 0)"></span>
+                                <span class="dot" onclick="goToSlide('why1', 1)"></span>
+                                <span class="dot" onclick="goToSlide('why1', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zigzag-row reverse">
+                    <div class="zigzag-content">
+                        <span class="tag">02. PRECIZNOST</span>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--pink);">Mikroskopski Detalji</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;">Svaki utor, šav, ventilacijski otvor i inače nedostupno mjesto čiste se sa specijaliziranim kistovima.</p>
+                        <ul style="color: #e4e4e7; font-size: 0.95rem; list-style: none; line-height: 1.8;">
+                            <li>✓ Detaljno čišćenje šavova i kožnih utora</li>
+                            <li>✓ Tretiranje plastika s UV zaštitom</li>
+                            <li>✓ Besprijekorna čistoća bez tragova</li>
+                        </ul>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('why2', -1)">❮</button>
+                            <img id="why2-img" src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('why2', 1)">❯</button>
+                            <div class="slider-dots" id="why2-dots">
+                                <span class="dot active" onclick="goToSlide('why2', 0)"></span>
+                                <span class="dot" onclick="goToSlide('why2', 1)"></span>
+                                <span class="dot" onclick="goToSlide('why2', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <span class="tag">03. GARANCIJA</span>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--purple);">Dugotrajna Zaštita Laka</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;">Naše keramičke i grafenske zaštite pružaju višegodišnju otpornost na mikro-ogrebotine i UV zrake.</p>
+                        <ul style="color: #e4e4e7; font-size: 0.95rem; list-style: none; line-height: 1.8;">
+                            <li>✓ Hidrofobni efekt odbijanja vode</li>
+                            <li>✓ Zaštita laka do 5 godina</li>
+                            <li>✓ Lakše i brže redovito pranje</li>
+                        </ul>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('why3', -1)">❮</button>
+                            <img id="why3-img" src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('why3', 1)">❯</button>
+                            <div class="slider-dots" id="why3-dots">
+                                <span class="dot active" onclick="goToSlide('why3', 0)"></span>
+                                <span class="dot" onclick="goToSlide('why3', 1)"></span>
+                                <span class="dot" onclick="goToSlide('why3', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zigzag-row reverse">
+                    <div class="zigzag-content">
+                        <span class="tag">04. POVJERENJE</span>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--pink);">Individualan Pristup</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;">Svakom vozilu pristupamo s posebnom pažnjom uz besplatnu procjenu stanja i plan održavanja.</p>
+                        <ul style="color: #e4e4e7; font-size: 0.95rem; list-style: none; line-height: 1.8;">
+                            <li>✓ Besplatno savjetovanje pod svjetlima</li>
+                            <li>✓ Prilagođeni paketi prema budžetu</li>
+                            <li>✓ Profesionalne upute za održavanje</li>
+                        </ul>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('why4', -1)">❮</button>
+                            <img id="why4-img" src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('why4', 1)">❯</button>
+                            <div class="slider-dots" id="why4-dots">
+                                <span class="dot active" onclick="goToSlide('why4', 0)"></span>
+                                <span class="dot" onclick="goToSlide('why4', 1)"></span>
+                                <span class="dot" onclick="goToSlide('why4', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: rgba(255,255,255,0.02); border-radius: 30px; padding: 60px 5%;">
+            <div class="section-header">
+                <h2>Postupak <span class="text-gradient">čišćenja vozila</span></h2>
+                <p>Pogledajte korak-po-korak kako pretvaramo vaše vozilo u besprijekorno stanje.</p>
+            </div>
+
+            <div class="zigzag-container">
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <div class="process-num-badge">01.</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--pink);">Inspekcija & Priprema Vozila</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">Na samom početku detaljno pregledavamo stanje laka i interijera pod specijalnim reflektorima.</p>
+                        <p style="color: var(--purple); font-weight: 600; font-size: 0.9rem;">Trajanje: cca 30 min</p>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('proc1', -1)">❮</button>
+                            <img id="proc1-img" src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('proc1', 1)">❯</button>
+                            <div class="slider-dots" id="proc1-dots">
+                                <span class="dot active" onclick="goToSlide('proc1', 0)"></span>
+                                <span class="dot" onclick="goToSlide('proc1', 1)"></span>
+                                <span class="dot" onclick="goToSlide('proc1', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zigzag-row reverse">
+                    <div class="zigzag-content">
+                        <div class="process-num-badge">02.</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--purple);">Bezopasno Dekontaminiranje</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">Nanosi se gusta aktivna pjena koja omekšava prljavštinu, praćena ručnim pranjem metodom 2 kante.</p>
+                        <p style="color: var(--pink); font-weight: 600; font-size: 0.9rem;">Trajanje: cca 1 - 2 sata</p>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('proc2', -1)">❮</button>
+                            <img id="proc2-img" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('proc2', 1)">❯</button>
+                            <div class="slider-dots" id="proc2-dots">
+                                <span class="dot active" onclick="goToSlide('proc2', 0)"></span>
+                                <span class="dot" onclick="goToSlide('proc2', 1)"></span>
+                                <span class="dot" onclick="goToSlide('proc2', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <div class="process-num-badge">03.</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--pink);">Dubinsko Pranje / Poliranje</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">Za kabinu vršimo dubinsko ekstrakcijsko pranje, a za eksterijer višeslojno strojno poliranje laka.</p>
+                        <p style="color: var(--purple); font-weight: 600; font-size: 0.9rem;">Trajanje: cca 3 - 8 sati</p>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('proc3', -1)">❮</button>
+                            <img id="proc3-img" src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('proc3', 1)">❯</button>
+                            <div class="slider-dots" id="proc3-dots">
+                                <span class="dot active" onclick="goToSlide('proc3', 0)"></span>
+                                <span class="dot" onclick="goToSlide('proc3', 1)"></span>
+                                <span class="dot" onclick="goToSlide('proc3', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zigzag-row reverse">
+                    <div class="zigzag-content">
+                        <div class="process-num-badge">04.</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--purple);">Zaštita, Ozonizacija & Kontrola</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">Nanosi se zaštitni keramički premaz, unutrašnjost se dezinficira ozonom, te slijedi završni pregled.</p>
+                        <p style="color: var(--pink); font-weight: 600; font-size: 0.9rem;">Trajanje: cca 1 - 2 sata</p>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('proc4', -1)">❮</button>
+                            <img id="proc4-img" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('proc4', 1)">❯</button>
+                            <div class="slider-dots" id="proc4-dots">
+                                <span class="dot active" onclick="goToSlide('proc4', 0)"></span>
+                                <span class="dot" onclick="goToSlide('proc4', 1)"></span>
+                                <span class="dot" onclick="goToSlide('proc4', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>Novosti i <span class="text-gradient">Najave</span></h2>
+                <p>Pratite naše najnovije tehnologije i stručne savjete.</p>
+            </div>
+            
+            <div class="zigzag-container">
+                <div class="zigzag-row">
+                    <div class="zigzag-content">
+                        <span class="tag">NOVOST</span>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--purple);">Uvođenje Graphene Keramike</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;">Stigao je napredni premaz koji pruža do 5 godina zaštite, iznimnu otpornost i ekstremnu hidrofobnost protiv svih vanjskih utjecaja.</p>
+                        <button class="btn-primary" onclick="switchView('news')">Pročitaj detalje →</button>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('newsSlider', -1)">❮</button>
+                            <img id="newsSlider-img" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('newsSlider', 1)">❯</button>
+                            <div class="slider-dots" id="newsSlider-dots">
+                                <span class="dot active" onclick="goToSlide('newsSlider', 0)"></span>
+                                <span class="dot" onclick="goToSlide('newsSlider', 1)"></span>
+                                <span class="dot" onclick="goToSlide('newsSlider', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: rgba(255,255,255,0.02); border-radius: 30px; padding: 60px 5%;">
+            <div class="section-header">
+                <h2>Zadnji <span class="text-gradient">Projekt</span></h2>
+                <p>Pogledajte transformaciju našeg najnovijeg projekta.</p>
+            </div>
+            
+            <div class="zigzag-container">
+                <div class="zigzag-row reverse">
+                    <div class="zigzag-content">
+                        <span class="tag">ISTAKNUTI RADOVI</span>
+                        <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: var(--pink);">Audi RS6 Avant</h3>
+                        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;">Izvedena je potpuna višeslojna korekcija laka i nanesen vrhunski keramički premaz za zrcalni sjaj bez greške.</p>
+                        <button class="btn-primary" onclick="switchView('gallery')">Pogledaj galeriju →</button>
+                    </div>
+                    <div class="zigzag-media">
+                        <div class="slider-box">
+                            <button class="slider-btn prev" onclick="changeSlide('worksSlider', -1)">❮</button>
+                            <img id="worksSlider-img" src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop" alt="">
+                            <button class="slider-btn next" onclick="changeSlide('worksSlider', 1)">❯</button>
+                            <div class="slider-dots" id="worksSlider-dots">
+                                <span class="dot active" onclick="goToSlide('worksSlider', 0)"></span>
+                                <span class="dot" onclick="goToSlide('worksSlider', 1)"></span>
+                                <span class="dot" onclick="goToSlide('worksSlider', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="newsletter-section">
+                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Prijavite se na naš Newsletter</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Saznajte prvi za popuste i specijalne ponude u vašem inboxu.</p>
+                <form class="newsletter-form" onsubmit="alert('Uspješno ste prijavljeni!'); event.preventDefault();">
+                    <input type="email" class="newsletter-input" placeholder="Vaša email adresa..." required>
+                    <button type="submit" class="btn-primary" style="padding: 15px 28px; white-space: nowrap;">Prijava</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== 2. USLUGE / CJENIK ==================== -->
+    <div id="view-services" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Cjenik i <span class="text-gradient">Paketi</span></h2>
+                <p>Detaljan pregled usluga s transparentnim cijenama i opisima.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <div class="p-content">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 6px;">Osnovni Detailing</h3>
+                        <div class="p-price">35€</div>
+                        <p class="p-desc">Detaljno ručno pranje metodom 2 kante i usisavanje interijera.</p>
+                        <ul class="p-list">
+                            <li>Predpranje aktivnom pjenom</li>
+                            <li>Ručno pranje i sušenje</li>
+                            <li>Usisavanje interijera</li>
+                            <li>Čišćenje stakala i guma</li>
+                        </ul>
+                        <button class="btn-primary" style="width: 100%;" onclick="selectServiceAndBook('Osnovni Detailing (35€)')">Odaberi</button>
+                    </div>
+                </div>
+
+                <div class="price-card" style="border-color: var(--pink);">
+                    <div class="p-img">
+                        <div class="p-badge">POPULARNO</div>
+                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=500&auto=format&fit=crop" alt="">
+                    </div>
+                    <div class="p-content">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 6px;">Kompletno Kemijsko</h3>
+                        <div class="p-price">90€</div>
+                        <p class="p-desc">Dubinsko ekstrakcijsko čišćenje tekstila, sjedala i uklanjanje mirisa.</p>
+                        <ul class="p-list">
+                            <li>Sve iz Osnovnog paketa</li>
+                            <li>Dubinsko pranje sjedala i tepiha</li>
+                            <li>Ozonizacija protiv mirisa</li>
+                            <li>Zaštitni premaz plastika</li>
+                        </ul>
+                        <button class="btn-primary" style="width: 100%;" onclick="selectServiceAndBook('Kompletno Kemijsko (90€)')">Odaberi</button>
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <div class="p-img"><img src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <div class="p-content">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 6px;">Poliranje & Keramika</h3>
+                        <div class="p-price" style="font-size: 1.8rem;">od 200€</div>
+                        <p class="p-desc">Strojna korekcija laka i nanošenje dugotrajnog keramičkog premaza.</p>
+                        <ul class="p-list">
+                            <li>Dekontaminacija laka</li>
+                            <li>Višeslojno poliranje (swirls)</li>
+                            <li>Keramički premaz (1-3 god)</li>
+                            <li>Poliranje farova</li>
+                        </ul>
+                        <button class="btn-primary" style="width: 100%; background: #27272a; box-shadow: none;" onclick="selectServiceAndBook('Poliranje i Keramika')">Zatraži ponudu</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== 3. NOVOSTI ==================== -->
+    <div id="view-news" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Novosti i <span class="text-gradient">Događanja</span></h2>
+                <p>Detaljni pregled naših radova, novih tehnologija i objava s galerijom slika.</p>
+            </div>
+            
+            <div class="news-page-grid">
+                <article class="news-article-card" data-article="graphene" onclick="openArticle('graphene')">
+                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                    <div class="news-article-content">
+                        <span class="news-article-date">15. Kolovoz 2026.</span>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Uvođenje Graphene keramičkih premaza</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Ponosno objavljujemo početak korištenja najnaprednijih grafenskih premaza na tržištu. Ova tehnologija osigurava neprekidnu zaštitu od ptičjeg izmeta, smole, UV zračenja i kemikalija u trajanju do 5 godina.</p>
+                        <span class="news-read-more">Pročitaj više →</span>
+                        <div class="news-article-gallery">
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Nanošenje keramike', 'Nanošenje u kontroliranim uvjetima.', 'Vrhunski sjaj nakon sušenja.')"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Priprema laka', 'Detaljno odmašćivanje.', 'Savršeno glatka površina.')"><img src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Završni rezultat', 'Zrcalni sjaj gotovog vozila.', 'Zaštićeno dugi niz godina.')"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-article-card" data-article="wash" onclick="openArticle('wash')">
+                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                    <div class="news-article-content">
+                        <span class="news-article-date">02. Kolovoz 2026.</span>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Zašto su automatske praonice opasne?</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Četke u klasičnim praonicama sakupljaju pijesak i prljavštinu s tisuća prethodnih automobila te ih poput brusnog papira nanose na vaš lak. Saznajte kako pravilno ručno pranje čuva vrijednost automobila.</p>
+                        <span class="news-read-more">Pročitaj više →</span>
+                        <div class="news-article-gallery">
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Metoda 2 kante', 'Korištenje separatora prljavštine.', 'Sigurno ispiranje rukavicom.')"><img src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Aktivna pjena', 'Otopina koja razgrađuje nečistoće.', 'Beskontaktno ispiranje.')"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Sušenje ručnikom', 'Mekani mikrofiber ručnici.', 'Bez mrlja od kamenca i ogrebotina.')"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <div id="view-news-detail" class="page-view">
+        <section class="news-detail-wrap">
+            <div style="margin-bottom: 20px;">
+                <button class="btn-primary" onclick="switchView('news')" style="padding: 12px 22px;">← Natrag na novosti</button>
+            </div>
+            <article class="news-detail-card">
+                <div class="news-detail-image"><img id="detail-image" src="" alt=""></div>
+                <div class="news-detail-content">
+                    <span class="news-article-date" id="detail-date">Datum</span>
+                    <h2 id="detail-title">Naslov</h2>
+                    <p id="detail-intro">Uvodni tekst</p>
+                </div>
+                <div class="news-detail-gallery" id="detail-gallery"></div>
+            </article>
+        </section>
+    </div>
+
+    <!-- ==================== 4. GALERIJA / RADOVI ==================== -->
+    <div id="view-gallery" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Fotoalbum <span class="text-gradient">Radova</span></h2>
+                <p>Kliknite na sliku za detaljnu usporedbu Prije / Poslije.</p>
+            </div>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="sve">Sve</button>
+                <button class="filter-btn" data-filter="kemijsko">Kemijsko čišćenje</button>
+                <button class="filter-btn" data-filter="poliranje">Poliranje laka</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="g-item kemijsko sve" onclick="openLightbox('Kemijsko čišćenje sjedala', 'Sjedala su bila zaprljana mrljama.', 'Dubinskim pranjem vraćen je izvorni izgled.')">
+                    <div class="g-img"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <div class="g-info"><h4>Sjedalo Prije/Poslije</h4><p>Klikni za detalje</p></div>
+                </div>
+
+                <div class="g-item poliranje sve" onclick="openLightbox('Korekcija laka', 'Lak je bio matiran i izgreban.', 'Strojnim poliranjem postignut je zrcalni sjaj.')">
+                    <div class="g-img"><img src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <div class="g-info"><h4>Poliranje Laka</h4><p>Klikni za detalje</p></div>
+                </div>
+
+                <div class="g-item poliranje sve" onclick="openLightbox('Restauracija farova', 'Farovi su bili žuti i mutni.', 'Brušenjem i poliranjem vraćena prozirnost.')">
+                    <div class="g-img"><img src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                    <div class="g-info"><h4>Poliranje Farova</h4><p>Klikni za detalje</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== 5. RECENZIJE ==================== -->
+    <div id="view-testimonials" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Zadovoljni <span class="text-gradient">Kupci</span></h2>
+                <p>Pročitajte dojmove ili ostavite vlastitu recenziju.</p>
+            </div>
+            
+            <div class="testimonials-grid" id="reviews-container">
+                <div class="testimonial-card">
+                    <div class="t-header">
+                        <div class="t-avatar">M</div>
+                        <div><strong>Marko Horvat</strong><div class="stars">★★★★★</div></div>
+                    </div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">"Auto izgleda kao da je upravo izašao iz salona! Preporuka svima."</p>
+                    <div class="t-img"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=500&auto=format&fit=crop" alt=""></div>
+                </div>
+            </div>
+
+            <div class="review-box">
+                <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--pink);">Ostavite recenziju</h3>
+                <form onsubmit="submitReview(event)">
+                    <div class="form-group" style="margin-bottom: 15px;"><input type="text" id="rev-name" class="input-pro" placeholder="Vaše ime" required></div>
+                    <div class="form-group" style="margin-bottom: 15px;"><textarea id="rev-text" class="input-pro" placeholder="Vaš dojam..." required></textarea></div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Objavi</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== 6. KONTAKT ==================== -->
+    <div id="view-contact" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Kontakt <span class="text-gradient">Podaci</span></h2>
+                <p>Posjetite nas osobno ili nam pošaljite brzi upit.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="c-box">
+                    <div class="c-item" style="display:block; margin-bottom: 24px;">
+                        <h3 style="margin: 0 0 12px; color: var(--pink); font-size: clamp(1.8rem, 2vw, 2.4rem);">Auto-Care Tinček</h3>
+                        <p style="margin: 0; color: var(--text-muted); line-height: 1.7; font-size: 1.02rem;">
+                            Vaš partner u sjaju Vašeg vozila! Vrhunska njega, profesionalni alati i posvećenost detaljima bez kompromisa.
+                        </p>
+                    </div>
+
+                    <div class="c-item" style="display:block; margin-top: 8px; margin-bottom: 0;">
+                        <h4 style="margin:0 0 10px; color: var(--pink); font-size: 1.35rem; font-weight: 700;">Radno Vrijeme</h4>
+                        <ul style="margin:0; padding-left: 20px; color: var(--text-muted); line-height:1.8; list-style: disc; font-size: 1.02rem;">
+                            <li><strong style="color:white;">Pon - Pet:</strong> 08:00 - 18:00</li>
+                            <li><strong style="color:white;">Subota:</strong> 08:00 - 14:00</li>
+                            <li><strong style="color:white;">Nedjelja:</strong> Zatvoreno</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="c-box">
+                    <h3>Brzi upit</h3>
+                    <form onsubmit="alert('Poruka je uspješno poslana!'); event.preventDefault();">
+                        <div class="form-group" style="margin-bottom: 15px;"><input type="text" class="input-pro" placeholder="Vaše ime" required></div>
+                        <div class="form-group" style="margin-bottom: 15px;"><textarea class="input-pro" placeholder="Vaša poruka..." required></textarea></div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Pošalji poruku</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps?q=Josipa+Slavenskog+12,+10000+Zagreb&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokacija Auto-Care Tinček"></iframe>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== 7. REZERVACIJA ==================== -->
+    <div id="view-booking" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Naruči se <span class="text-gradient">odmah</span></h2>
+                <p>Odaberite uslugu, datum i vrijeme za dolazak.</p>
+            </div>
+            
+            <div class="form-glass" style="max-width: 750px; margin: 0 auto;">
+                <form onsubmit="alert('Zahtjev za termin uspješno poslan!'); event.preventDefault(); switchView('home');">
+                    <div class="form-grid">
+                        <div class="form-group"><label>Ime i Prezime *</label><input type="text" name="Ime" class="input-pro" placeholder="Vaše ime" required></div>
+                        <div class="form-group"><label>Broj mobitela *</label><input type="tel" name="Telefon" class="input-pro" placeholder="09X XXX XXXX" required></div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group"><label>Vozilo (Marka i Model) *</label><input type="text" name="Vozilo" class="input-pro" placeholder="Npr. VW Golf" required></div>
+                        <div class="form-group">
+                            <label>Usluga *</label>
+                            <div class="select-wrapper">
+                                <select id="usluga" name="Usluga" required>
+                                    <option value="" disabled selected>Odaberite...</option>
+                                    <option value="Osnovni Detailing">Osnovni Detailing (35€)</option>
+                                    <option value="Kompletno Kemijsko">Kompletno Kemijsko (90€)</option>
+                                    <option value="Poliranje i Keramika">Poliranje i Keramika</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group"><label>Datum *</label><input type="date" name="Datum" class="input-pro" required></div>
+                        <div class="form-group">
+                            <label>Vrijeme *</label>
+                            <div class="select-wrapper">
+                                <select name="Vrijeme" required>
+                                    <option value="" disabled selected>Odaberite...</option>
+                                    <option value="08:00">08:00 Ujutro</option>
+                                    <option value="12:00">12:00 Podne</option>
+                                    <option value="15:00">15:00 Popodne</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 20px;"><label>Napomena (opcionalno)</label><textarea name="Napomena" class="input-pro" placeholder="Dodatne napomene..."></textarea></div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Pošalji zahtjev za termin</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== FOOTER (5 stupaca, centriran) ==================== -->
+    <footer>
+        <div class="f-grid">
+            <div class="f-col">
+                <h3>Kontakt</h3>
+                <p><strong>Adresa:</strong> Josipa Slavenskog 12, 10000 Zagreb</p>
+                <p><strong>Telefon:</strong> +385 9X XXX XXXX</p>
+                <p><strong>Mail:</strong> info@autocaretincek.hr</p>
+            </div>
+            <div class="f-col">
+                <h3>Radno Vrijeme</h3>
+                <p><strong>Pon - Pet:</strong> 08:00 - 18:00</p>
+                <p><strong>Subota:</strong> 08:00 - 14:00</p>
+                <p><strong>Nedjelja:</strong> Zatvoreno</p>
+            </div>
+            <div class="f-col">
+                <h3>Usluge i Cjenik</h3>
+                <ul>
+                    <li><a onclick="switchView('services')">Osnovni Detailing (35€)</a></li>
+                    <li><a onclick="switchView('services')">Kompletno Kemijsko (90€)</a></li>
+                    <li><a onclick="switchView('services')">Poliranje & Keramika (od 200€)</a></li>
+                    <li><a onclick="switchView('services')">Graphene Premaz</a></li>
+                    <li><a onclick="switchView('services')">Poliranje Farova</a></li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h3>Naruči se</h3>
+                <div class="f-booking-card" onclick="switchView('booking')" title="Klikni i naruči se odmah">
+                    <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=500&auto=format&fit=crop" alt="">
+                    <div style="padding: 12px; background: var(--gradient); color: white; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
+                        Naruči se odmah →
+                    </div>
+                </div>
+            </div>
+            <div class="f-col">
+                <h3>Izbornik</h3>
+                <ul>
+                    <li><a onclick="switchView('home')">Početna</a></li>
+                    <li><a onclick="switchView('services')">Usluge i Cjenik</a></li>
+                    <li><a onclick="switchView('news')">Novosti</a></li>
+                    <li><a onclick="switchView('gallery')">Radovi</a></li>
+                    <li><a onclick="switchView('testimonials')">Recenzije</a></li>
+                    <li><a onclick="switchView('contact')">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="f-bottom">
+            <p style="color: var(--text-muted); font-size: 0.95rem;">&copy; 2026 Auto-Care Tinček. Sva prava pridržana. Izrada: Kova-Design.</p>
+            <div class="counter-box">
+                <span style="color: var(--text-muted);">Posjeta:</span>
+                <strong id="visitor-count">0001</strong>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function switchView(viewId) {
+            document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            
+            const target = document.getElementById('view-' + viewId);
+            if (target) target.classList.add('active');
+            const link = document.getElementById('link-' + viewId);
+            if(link) link.classList.add('active');
+            
+            window.scrollTo(0, 0);
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks) navLinks.classList.remove('active');
+        }
+
+        const newsArticles = {
+            graphene: {
+                title: 'Uvođenje Graphene keramičkih premaza',
+                date: '15. Kolovoz 2026.',
+                image: 'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1200&auto=format&fit=crop',
+                intro: 'Ponosno objavljujemo početak korištenja najnaprednijih grafenskih premaza na tržištu. Ova tehnologija pruža zaštitu od UV zračenja, kemikalija, smole i ptičjeg izmeta u trajanju do 5 godina.',
+                gallery: [
+                    'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=500&auto=format&fit=crop'
+                ]
+            },
+            wash: {
+                title: 'Zašto su automatske praonice opasne?',
+                date: '02. Kolovoz 2026.',
+                image: 'https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=1200&auto=format&fit=crop',
+                intro: 'Četke u klasičnim praonicama sakupljaju pijesak i prljavštinu s tisuća prethodnih automobila te ih poput brusnog papira nanose na vaš lak. Saznajte kako pravilno ručno pranje čuva vrijednost automobila.',
+                gallery: [
+                    'https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=500&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=500&auto=format&fit=crop'
+                ]
+            }
+        };
+
+        function openArticle(articleId) {
+            const article = newsArticles[articleId];
+            if (!article) return;
+
+            document.getElementById('detail-image').src = article.image;
+            document.getElementById('detail-image').alt = article.title;
+            document.getElementById('detail-date').textContent = article.date;
+            document.getElementById('detail-title').textContent = article.title;
+            document.getElementById('detail-intro').textContent = article.intro;
+
+            const gallery = document.getElementById('detail-gallery');
+            gallery.innerHTML = '';
+            article.gallery.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = article.title;
+                gallery.appendChild(img);
+            });
+
+            switchView('news-detail');
+        }
+
+        function selectServiceAndBook(serviceName) {
+            switchView('booking');
+            const sel = document.getElementById('usluga');
+            if(sel) sel.value = serviceName.includes('Osnovni') ? 'Osnovni Detailing' : (serviceName.includes('Kemijsko') ? 'Kompletno Kemijsko' : 'Poliranje i Keramika');
+        }
+
+        const slidersData = {
+            'why1': { images: ["https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'why2': { images: ["https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'why3': { images: ["https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'why4': { images: ["https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc1': { images: ["https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc2': { images: ["https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc3': { images: ["https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'proc4': { images: ["https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'newsSlider': { images: ["https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop"], index: 0 },
+            'worksSlider': { images: ["https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop", "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop"], index: 0 }
+        };
+
+        function changeSlide(sliderId, direction) {
+            const slider = slidersData[sliderId];
+            if (!slider) return;
+            slider.index = (slider.index + direction + slider.images.length) % slider.images.length;
+            updateSlider(sliderId);
+        }
+
+        function goToSlide(sliderId, index) {
+            const slider = slidersData[sliderId];
+            if (!slider) return;
+            slider.index = index;
+            updateSlider(sliderId);
+        }
+
+        function updateSlider(sliderId) {
+            const slider = slidersData[sliderId];
+            const imgEl = document.getElementById(sliderId + '-img');
+            if (imgEl) imgEl.src = slider.images[slider.index];
+            const dotsContainer = document.getElementById(sliderId + '-dots');
+            if (dotsContainer) {
+                dotsContainer.querySelectorAll('.dot').forEach((dot, idx) => {
+                    if (idx === slider.index) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+            }
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const weatherStates = [
+                { icon: '☀️', temp: 26, label: 'Sunčano' },
+                { icon: '🌤️', temp: 25, label: 'Blaga sunce' },
+                { icon: '⛅', temp: 23, label: 'Mjestimično oblačno' },
+                { icon: '🌦️', temp: 21, label: 'Povremeno kiša' },
+                { icon: '🌙', temp: 18, label: 'Vedra noć' }
+            ];
+            const idx = Math.floor((now.getHours() + now.getMinutes() / 60) / 5) % weatherStates.length;
+            const state = weatherStates[idx];
+
+            document.getElementById('live-date').innerHTML = `Datum: <span>${now.toLocaleDateString('hr-HR')}</span>`;
+            document.getElementById('live-time').innerHTML = `Sat: <span>${now.toLocaleTimeString('hr-HR')}</span>`;
+            document.getElementById('live-weather').innerHTML = `Zagreb: <span>${state.icon} ${state.temp}°C, ${state.label}</span>`;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTopBtn');
+            if (window.scrollY > 300) btn.classList.add('show');
+            else btn.classList.remove('show');
+        });
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        document.getElementById('mobile-menu').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        setTimeout(() => { document.getElementById('top-ponuda-modal').style.display = 'flex'; }, 2000);
+        document.getElementById('close-modal').addEventListener('click', () => { document.getElementById('top-ponuda-modal').style.display = 'none'; });
+        document.getElementById('btn-prihvati-ponudu').addEventListener('click', () => {
+            document.getElementById('top-ponuda-modal').style.display = 'none';
+            switchView('booking');
+            document.getElementById('usluga').value = 'Kompletno Kemijsko';
+        });
+
+        const lb = document.getElementById('lightbox-modal');
+        function openLightbox(title, before, after) {
+            document.getElementById('lb-title').innerText = title;
+            document.getElementById('lb-desc-before').innerText = before;
+            document.getElementById('lb-desc-after').innerText = after;
+            lb.style.display = 'flex';
+        }
+        document.getElementById('close-lightbox').addEventListener('click', () => { lb.style.display = 'none'; });
+
+        const fBtns = document.querySelectorAll('.filter-btn');
+        const gItems = document.querySelectorAll('.g-item');
+        fBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                fBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.getAttribute('data-filter');
+                gItems.forEach(item => {
+                    item.style.display = (f === 'sve' || item.classList.contains(f)) ? 'block' : 'none';
+                });
+            });
+        });
+
+        function submitReview(e) {
+            e.preventDefault();
+            const name = document.getElementById('rev-name').value;
+            const text = document.getElementById('rev-text').value;
+            const container = document.getElementById('reviews-container');
+
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.innerHTML = `
+                <div class="t-header">
+                    <div class="t-avatar">${name.charAt(0).toUpperCase()}</div>
+                    <div><strong>${name}</strong><div class="stars">★★★★★</div></div>
+                </div>
+                <p style="font-size: 0.95rem; color: var(--text-muted);">"${text}"</p>
+            `;
+            container.prepend(card);
+            alert("Hvala vam na recenziji!");
+            document.getElementById('rev-name').value = "";
+            document.getElementById('rev-text').value = "";
+        }
+
+        let visits = localStorage.getItem('tincek_visits') || 1;
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('tincek_visits', visits);
+        document.getElementById('visitor-count').innerText = visits.toString().padStart(4, '0');
+    </script>
+</body>
+</html>
