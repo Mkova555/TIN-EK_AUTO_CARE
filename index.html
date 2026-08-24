@@ -49,25 +49,43 @@
             position: fixed; top: 0; left: 0; width: 100%;
             background: linear-gradient(180deg, #18181b, #09090b);
             border-bottom: 2px solid rgba(168, 85, 247, 0.4);
-            color: white; height: 70px; display: flex; flex-direction: column; justify-content: center;
+            color: white; height: 80px; display: flex; flex-direction: column; justify-content: center;
             z-index: 1001; padding: 6px 25px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
         .ticker-top-row {
             display: flex; justify-content: space-between; align-items: center; gap: 18px;
-            font-size: 0.95rem; font-weight: 600; color: var(--pink); border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 4px;
+            font-size: 0.95rem; font-weight: 600; color: var(--pink); border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 6px;
         }
         .ticker-top-row > div:last-child { margin-left: auto; text-align: right; }
         .ticker-top-row span { color: #fff; font-weight: 700; }
 
-        .ticker-scroller { overflow: hidden; width: 100%; position: relative; height: 30px; display: flex; align-items: center; }
-        .ticker-content-box { display: flex; white-space: nowrap; animation: continuousTicker 20s linear infinite; }
-        .ticker-text-item { font-size: 1.05rem; font-weight: 700; color: #f472b6; text-transform: uppercase; letter-spacing: 1px; padding-right: 60px; }
-        @keyframes continuousTicker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-scroller { 
+            overflow: hidden; width: 100%; position: relative; height: 35px; 
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 6px; 
+        }
+        .ticker-content-box { 
+            display: flex; width: 100%; justify-content: center; align-items: center; position: relative; 
+        }
+        .ticker-text-item { 
+            font-size: 1.05rem; font-weight: 700; color: #f472b6; text-transform: uppercase; 
+            letter-spacing: 1px; white-space: nowrap; position: absolute;
+            animation: slideStopBlink 12s infinite; 
+        }
+        
+        @keyframes slideStopBlink {
+            0% { transform: translateX(120vw) scale(1); color: #f472b6; text-shadow: none; }
+            15% { transform: translateX(0) scale(1); color: #f472b6; text-shadow: none; }
+            25%, 45%, 65% { transform: translateX(0) scale(1.05); color: #fff; text-shadow: 0 0 15px var(--pink), 0 0 30px var(--purple); }
+            35%, 55%, 75% { transform: translateX(0) scale(1); color: #f472b6; text-shadow: none; }
+            85% { transform: translateX(-120vw) scale(1); color: #f472b6; text-shadow: none; }
+            100% { transform: translateX(-120vw) scale(1); color: #f472b6; text-shadow: none; }
+        }
 
         /* --- NAVIGACIJA --- */
         nav {
-            position: fixed; top: 70px; left: 0; width: 100%; padding: 18px 35px;
+            position: fixed; top: 80px; left: 0; width: 100%; padding: 18px 35px;
             display: flex; justify-content: space-between; align-items: center;
             background: rgba(9, 9, 11, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -463,17 +481,18 @@
             .news-page-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            nav { padding: 12px 18px; }
+            nav { padding: 12px 18px; top: 85px; }
             .menu-toggle { display: flex; }
             .nav-links {
-                position: fixed; top: 80px; left: -100%; flex-direction: column; width: 100%;
+                position: fixed; top: 85px; left: -100%; flex-direction: column; width: 100%;
                 background: rgba(9, 9, 11, 0.98); padding: 30px 20px; transition: 0.4s;
                 border-bottom: 2px solid var(--purple); gap: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             }
             .nav-links.active { left: 0; }
             section { padding: 40px 15px; }
             .f-bottom { flex-direction: column; text-align: center; justify-content: center; }
-            .ticker-wrap { height: 75px; padding: 6px 12px; }
+            .ticker-wrap { height: 85px; padding: 6px 12px; }
+            .ticker-scroller { margin-top: 4px; }
             .ticker-top-row { font-size: 0.8rem; }
             .ticker-text-item { font-size: 0.9rem; }
             .whatsapp-float { right: 12px; width: 44px; height: 44px; bottom: 75px; }
@@ -508,8 +527,7 @@
         </div>
         <div class="ticker-scroller">
             <div class="ticker-content-box">
-                <div class="ticker-text-item">🔥 TOP PONUDA: KEMIJSKO ČIŠĆENJE 90€ UZ BESPLATAN PREMAZ STAKLA! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 🛡️ UVELI SMO NAPREDNU GRAPHENE KERAMIKU! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 📞 NAZOVITE NAS ODMAH ZA SLOBODAN TERMIN!</div>
-                <div class="ticker-text-item">🔥 TOP PONUDA: KEMIJSKO ČIŠĆENJE 90€ UZ BESPLATAN PREMAZ STAKLA! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 🛡️ UVELI SMO NAPREDNU GRAPHENE KERAMIKU! &nbsp;&nbsp;&nbsp;★&nbsp;&nbsp;&nbsp; 📞 NAZOVITE NAS ODMAH ZA SLOBODAN TERMIN!</div>
+                <div class="ticker-text-item">🔥 TOP PONUDA: KEMIJSKO ČIŠĆENJE 90€ UZ BESPLATAN PREMAZ STAKLA!</div>
             </div>
         </div>
     </div>
