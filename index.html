@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#09090b">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
         :root {
@@ -571,7 +572,9 @@
 
         <ul class="nav-links" id="nav-links">
             <li><a onclick="switchView('home')" class="active" id="link-home">Početna</a></li>
-            <li><a onclick="switchView('services')" id="link-services">Usluge i Cjenik</a></li>
+            <li><a onclick="switchView('services')" id="link-services">Usluge</a></li>
+            <li><a onclick="switchView('packages')" id="link-packages">Paketi</a></li>
+            <li><a onclick="switchView('pricing')" id="link-pricing">Cjenik</a></li>
             <li><a onclick="switchView('news')" id="link-news">Novosti</a></li>
             <li><a onclick="switchView('gallery')" id="link-gallery">Radovi</a></li>
             <li><a onclick="switchView('testimonials')" id="link-testimonials">Recenzije</a></li>
@@ -658,7 +661,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('why1', -1)">❮</button>
-                            <img id="why1-img" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="why1-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('why1', 1)">❯</button>
                             <div class="slider-dots" id="why1-dots">
                                 <span class="dot active" onclick="goToSlide('why1', 0)"></span>
@@ -683,7 +686,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('why2', -1)">❮</button>
-                            <img id="why2-img" src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="why2-img" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('why2', 1)">❯</button>
                             <div class="slider-dots" id="why2-dots">
                                 <span class="dot active" onclick="goToSlide('why2', 0)"></span>
@@ -708,7 +711,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('why3', -1)">❮</button>
-                            <img id="why3-img" src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="why3-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('why3', 1)">❯</button>
                             <div class="slider-dots" id="why3-dots">
                                 <span class="dot active" onclick="goToSlide('why3', 0)"></span>
@@ -733,7 +736,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('why4', -1)">❮</button>
-                            <img id="why4-img" src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="why4-img" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('why4', 1)">❯</button>
                             <div class="slider-dots" id="why4-dots">
                                 <span class="dot active" onclick="goToSlide('why4', 0)"></span>
@@ -763,7 +766,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('proc1', -1)">❮</button>
-                            <img id="proc1-img" src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="proc1-img" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('proc1', 1)">❯</button>
                             <div class="slider-dots" id="proc1-dots">
                                 <span class="dot active" onclick="goToSlide('proc1', 0)"></span>
@@ -784,7 +787,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('proc2', -1)">❮</button>
-                            <img id="proc2-img" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="proc2-img" src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('proc2', 1)">❯</button>
                             <div class="slider-dots" id="proc2-dots">
                                 <span class="dot active" onclick="goToSlide('proc2', 0)"></span>
@@ -805,7 +808,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('proc3', -1)">❮</button>
-                            <img id="proc3-img" src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="proc3-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('proc3', 1)">❯</button>
                             <div class="slider-dots" id="proc3-dots">
                                 <span class="dot active" onclick="goToSlide('proc3', 0)"></span>
@@ -826,7 +829,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('proc4', -1)">❮</button>
-                            <img id="proc4-img" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="proc4-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('proc4', 1)">❯</button>
                             <div class="slider-dots" id="proc4-dots">
                                 <span class="dot active" onclick="goToSlide('proc4', 0)"></span>
@@ -856,7 +859,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('newsSlider', -1)">❮</button>
-                            <img id="newsSlider-img" src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="newsSlider-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('newsSlider', 1)">❯</button>
                             <div class="slider-dots" id="newsSlider-dots">
                                 <span class="dot active" onclick="goToSlide('newsSlider', 0)"></span>
@@ -886,7 +889,7 @@
                     <div class="zigzag-media">
                         <div class="slider-box">
                             <button class="slider-btn prev" onclick="changeSlide('worksSlider', -1)">❮</button>
-                            <img id="worksSlider-img" src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=800&auto=format&fit=crop" alt="">
+                            <img id="worksSlider-img" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=800&auto=format&fit=crop" alt="">
                             <button class="slider-btn next" onclick="changeSlide('worksSlider', 1)">❯</button>
                             <div class="slider-dots" id="worksSlider-dots">
                                 <span class="dot active" onclick="goToSlide('worksSlider', 0)"></span>
@@ -913,12 +916,18 @@
         </section>
     </div>
 
-    <!-- ==================== 2. USLUGE / CJENIK ==================== -->
+    <!-- ==================== 2. USLUGE ==================== -->
     <div id="view-services" class="page-view">
+        <!-- Ovdje će JavaScript automatski ubaciti sve kategorije i okvire iz 'uslugeData' varijable -->
+        <div id="usluge-dynamic-container"></div>
+    </div>
+
+    <!-- ==================== 2.5 PAKETI ==================== -->
+    <div id="view-packages" class="page-view">
         <section>
             <div class="section-header">
-                <h2>Cjenik i <span class="text-gradient">Paketi</span></h2>
-                <p>Detaljan pregled usluga s transparentnim cijenama i opisima.</p>
+                <h2>Naši <span class="text-gradient">Paketi</span></h2>
+                <p>Detaljan pregled naših glavnih paketa s transparentnim cijenama.</p>
             </div>
             
             <div class="pricing-grid">
@@ -976,6 +985,31 @@
         </section>
     </div>
 
+    <!-- ==================== 2.6 CJENIK ==================== -->
+    <div id="view-pricing" class="page-view">
+        <section>
+            <div class="section-header">
+                <h2>Službeni <span class="text-gradient">Cjenik</span></h2>
+                <p>Detaljan popis svih naših pojedinačnih usluga. Klikom na gumb preuzmite cjenik u PDF formatu.</p>
+                <button class="btn-primary" style="margin-top: 20px; padding: 16px 40px; font-size: 1.1rem;" onclick="generatePDF()">⬇ Preuzmi Cjenik (PDF)</button>
+            </div>
+            
+            <!-- Ovaj div drži cjenik koji se pretvara u PDF -->
+            <div style="background: #ffffff; color: #000000; padding: 50px 40px; border-radius: 12px; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" id="pdf-cjenik-wrap">
+                <h2 style="text-align: center; color: #ec4899; font-family: 'Montserrat', sans-serif; font-size: 2.2rem; margin-bottom: 5px;">TINČEK AUTO-CARE</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #555; margin-bottom: 40px; font-weight: 600;">Službeni Cjenik Pojedinačnih Usluga</p>
+                
+                <!-- JS ovdje ubacuje tablicu cijena -->
+                <div id="cjenik-table-body"></div>
+                
+                <div style="margin-top: 50px; text-align: center; font-size: 0.85rem; color: #888; border-top: 1px solid #ddd; padding-top: 20px;">
+                    Sve cijene izražene su u eurima (€). Za sve dodatne upite i procjene, slobodno nas kontaktirajte.<br>
+                    Josipa Slavenskog 12, 10000 Zagreb | Tel: +385 9X XXX XXXX | info@autocaretincek.hr
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- ==================== 3. NOVOSTI ==================== -->
     <div id="view-news" class="page-view">
         <section>
@@ -986,31 +1020,31 @@
             
             <div class="news-page-grid">
                 <article class="news-article-card" data-article="graphene" onclick="openArticle('graphene')">
-                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=1200&auto=format&fit=crop" alt="Graphene keramika"></div>
+                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200&auto=format&fit=crop" alt="Graphene keramika"></div>
                     <div class="news-article-content">
                         <span class="news-article-date">15. Kolovoz 2026.</span>
                         <h3>Uvođenje Graphene keramičkih premaza</h3>
                         <p>Ponosno objavljujemo početak korištenja najnaprednijih grafenskih premaza na tržištu. Ova tehnologija osigurava neprekidnu zaštitu od ptičjeg izmeta, smole, UV zračenja i kemikalija u trajanju do 5 godina.</p>
                         <span class="news-read-more">Pročitaj više →</span>
                         <div class="news-article-gallery">
-                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Nanošenje keramike', 'Nanošenje u kontroliranim uvjetima.', 'Vrhunski sjaj nakon sušenja.')"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=300&auto=format&fit=crop" alt=""></div>
-                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Priprema laka', 'Detaljno odmašćivanje.', 'Savršeno glatka površina.')"><img src="https://images.unsplash.com/photo-1552930294-6b595f4c2974?q=80&w=300&auto=format&fit=crop" alt=""></div>
-                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Završni rezultat', 'Zrcalni sjaj gotovog vozila.', 'Zaštićeno dugi niz godina.')"><img src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Nanošenje keramike', 'Nanošenje u kontroliranim uvjetima.', 'Vrhunski sjaj nakon sušenja.')"><img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Priprema laka', 'Detaljno odmašćivanje.', 'Savršeno glatka površina.')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Završni rezultat', 'Zrcalni sjaj gotovog vozila.', 'Zaštićeno dugi niz godina.')"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=300&auto=format&fit=crop" alt=""></div>
                         </div>
                     </div>
                 </article>
 
                 <article class="news-article-card" data-article="wash" onclick="openArticle('wash')">
-                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1605810731114-11883faee236?q=80&w=1200&auto=format&fit=crop" alt="Automatske praonice"></div>
+                    <div class="news-article-img"><img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=1200&auto=format&fit=crop" alt="Automatske praonice"></div>
                     <div class="news-article-content">
                         <span class="news-article-date">02. Kolovoz 2026.</span>
                         <h3>Zašto su automatske praonice opasne?</h3>
                         <p>Četke u klasičnim praonicama sakupljaju pijesak i prljavštinu s tisuća prethodnih automobila te ih poput brusnog papira nanose na vaš lak. Saznajte kako pravilno ručno pranje čuva vrijednost automobila.</p>
                         <span class="news-read-more">Pročitaj više →</span>
                         <div class="news-article-gallery">
-                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Metoda 2 kante', 'Korištenje separatora prljavštine.', 'Sigurno ispiranje rukavicom.')"><img src="https://images.unsplash.com/photo-1600661653561-629509216228?q=80&w=300&auto=format&fit=crop" alt=""></div>
-                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Aktivna pjena', 'Otopina koja razgrađuje nečistoće.', 'Beskontaktno ispiranje.')"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=300&auto=format&fit=crop" alt=""></div>
-                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Sušenje ručnikom', 'Mekani mikrofiber ručnici.', 'Bez mrlja od kamenca i ogrebotina.')"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Metoda 2 kante', 'Korištenje separatora prljavštine.', 'Sigurno ispiranje rukavicom.')"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Aktivna pjena', 'Otopina koja razgrađuje nečistoće.', 'Beskontaktno ispiranje.')"><img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=300&auto=format&fit=crop" alt=""></div>
+                            <div class="news-thumb" onclick="event.stopPropagation(); openLightbox('Sušenje ručnikom', 'Mekani mikrofiber ručnici.', 'Bez mrlja od kamenca i ogrebotina.')"><img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=300&auto=format&fit=crop" alt=""></div>
                         </div>
                     </div>
                 </article>
@@ -1117,7 +1151,7 @@
 
                     <div class="c-item" style="display:block; margin-bottom: 24px;">
                         <ul style="margin:0; padding: 0; color: var(--text-muted); line-height:1.8; list-style: none; font-size: 1.02rem;">
-                            <li><strong style="color:white;">A:</strong> Josipa Slavenskog 12, 10000 Zagreb</li>
+                            <li><strong style="color:white;">A:</strong> Slavenskog 12, Zagreb</li>
                             <li><strong style="color:white;">T:</strong> +385 9X XXX XXXX</li>
                             <li><strong style="color:white;">M:</strong> info@autocaretincek.hr</li>
                         </ul>
@@ -1126,9 +1160,9 @@
                     <div class="c-item" style="display:block; margin-top: 8px; margin-bottom: 0;">
                         <h4 style="margin:0 0 10px; color: var(--pink); font-size: 1.35rem; font-weight: 700;">Radno Vrijeme</h4>
                         <ul style="margin:0; padding-left: 20px; color: var(--text-muted); line-height:1.8; list-style: disc; font-size: 1.02rem;">
-                            <li><strong style="color:white;">Pon - Pet:</strong> 08:00 - 18:00</li>
-                            <li><strong style="color:white;">Subota:</strong> 08:00 - 14:00</li>
-                            <li><strong style="color:white;">Nedjelja:</strong> Zatvoreno</li>
+                            <li><strong style="color:white;">Pon-Pet:</strong> 08:00 - 18:00</li>
+                            <li><strong style="color:white;">Sub:</strong> 08:00 - 14:00</li>
+                            <li><strong style="color:white;">Ned:</strong> Zatvoreno</li>
                         </ul>
                     </div>
                 </div>
@@ -1224,7 +1258,9 @@
                 <h3>Izbornik</h3>
                 <ul>
                     <li><a onclick="switchView('home')">Početna</a></li>
-                    <li><a onclick="switchView('services')">Usluge i Cjenik</a></li>
+                    <li><a onclick="switchView('services')">Usluge</a></li>
+                    <li><a onclick="switchView('packages')">Paketi</a></li>
+                    <li><a onclick="switchView('pricing')">Cjenik</a></li>
                     <li><a onclick="switchView('news')">Novosti</a></li>
                     <li><a onclick="switchView('gallery')">Radovi</a></li>
                     <li><a onclick="switchView('testimonials')">Recenzije</a></li>
@@ -1234,21 +1270,21 @@
 
             <div class="f-col">
                 <h3>Kontakt</h3>
-                <p><strong>A:</strong> Josipa Slavenskog 12, 10000 Zagreb</p>
+                <p><strong>A:</strong> Slavenskog 12, Zagreb</p>
                 <p><strong>T:</strong> +385 9X XXX XXXX</p>
                 <p style="margin-bottom: 15px;"><strong>M:</strong> info@autocaretincek.hr</p>
                 
-                <p><strong>P-P:</strong> 08:00 - 18:00</p>
-                <p><strong>S:</strong> 08:00 - 14:00</p>
-                <p><strong>N:</strong> Zatvoreno</p>
+                <p><strong>Pon-Pet:</strong> 08:00 - 18:00</p>
+                <p><strong>Sub:</strong> 08:00 - 14:00</p>
+                <p><strong>Ned:</strong> Zatvoreno</p>
             </div>
 
             <div class="f-col">
                 <h3>Usluge i Cjenik</h3>
                 <ul>
-                    <li><a onclick="switchView('services')">Osnovni Detailing (35€)</a></li>
-                    <li><a onclick="switchView('services')">Kompletno Kemijsko (90€)</a></li>
-                    <li><a onclick="switchView('services')">Poliranje & Keramika (od 200€)</a></li>
+                    <li><a onclick="switchView('packages')">Osnovni Detailing (35€)</a></li>
+                    <li><a onclick="switchView('packages')">Kompletno Kemijsko (90€)</a></li>
+                    <li><a onclick="switchView('packages')">Poliranje & Keramika (od 200€)</a></li>
                     <li><a onclick="switchView('services')">Graphene Premaz</a></li>
                     <li><a onclick="switchView('services')">Poliranje Farova</a></li>
                 </ul>
@@ -1256,13 +1292,10 @@
 
             <div class="f-col">
                 <h3>&nbsp;</h3>
-                <div style="width: 100%; max-width: 160px; margin: 0 auto; display: flex; justify-content: center; align-items: center; padding-top: 5px; cursor: pointer;" onclick="switchView('home')">
-                    <div class="text-logo" style="align-items: center; text-align: center;">
-                        <span class="logo-tincek" style="font-size: 1.6rem;">TINČEK</span>
-                        <span class="logo-ac" style="font-size: 0.85rem; letter-spacing: 2px;">AUTO-CARE</span>
-                    </div>
+                <div style="width: 100%; max-width: 220px; margin: 0 auto; display: flex; justify-content: center; align-items: center; cursor: pointer; transform: translateY(-15px);" onclick="switchView('home')">
+                    <img src="logo_tincek-ac.png" alt="Auto-Care Tinček logo" style="width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.08));" />
                 </div>
-                <p style="margin-top: 15px; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+                <p style="margin-top: 5px; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
                     <strong style="color: white; display: block; margin-bottom: 4px; font-size: 0.95rem;">Auto-Care Tinček</strong>
                     Vaš partner u sjaju Vašeg vozila! Vrhunska njega, profesionalni alati i posvećenost detaljima bez kompromisa.
                 </p>
@@ -1497,6 +1530,146 @@
         visits = parseInt(visits) + 1;
         localStorage.setItem('tincek_visits', visits);
         document.getElementById('visitor-count').innerText = visits.toString().padStart(4, '0');
+
+        // =========================================================================
+        // AUTOMATSKO GENERIRANJE USLUGA I CJENIKA
+        // Uredi ovu bazu podataka ('uslugeData') za dodavanje, brisanje i promjenu!
+        // =========================================================================
+        const uslugeData = [
+            {
+                kategorija: "1. Kemijsko čišćenje auta",
+                stavke: [
+                    { naziv: "Kemijsko čišćenje 1 sjedala", opis: "Dubinsko ekstrakcijsko čišćenje jednog sjedala uz uklanjanje mrlja i mirisa.", trajanje: "30 min", cijena: "15€", slika: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Kemijsko čišćenje podova", opis: "Temeljito čišćenje podnih obloga vozila ekstrakcijom kako bi se izvukla dubinska prljavština.", trajanje: "45 min", cijena: "25€", slika: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Kemijsko čišćenje gepeka", opis: "Dubinsko pranje prtljažnog prostora za uklanjanje mrlja od tereta i tekućina.", trajanje: "30 min", cijena: "15€", slika: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Brisanje i premaz plastike", opis: "Detaljno čišćenje svih plastičnih površina u interijeru i nanošenje zaštitnog UV premaza.", trajanje: "30 min", cijena: "20€", slika: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Strop (Nebo) vozila", opis: "Pažljivo ručno kemijsko čišćenje krova vozila specijalnim pjenama koje ne oštećuju ljepilo.", trajanje: "45 min", cijena: "25€", slika: "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Oplate vrata", opis: "Kemijsko čišćenje tapeciranih dijelova na vratima uz brisanje plastike.", trajanje: "20 min", cijena: "15€", slika: "https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usluga 7 (izmjeni po želji)", opis: "Opis za sedmu uslugu kemijskog čišćenja.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usluga 8 (izmjeni po želji)", opis: "Opis za osmu uslugu kemijskog čišćenja.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usluga 9 (izmjeni po želji)", opis: "Opis za devetu uslugu kemijskog čišćenja.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usluga 10 (izmjeni po želji)", opis: "Opis za desetu uslugu kemijskog čišćenja.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" }
+                ]
+            },
+            {
+                kategorija: "2. Kemijsko čišćenje dječjih autosjedalica",
+                stavke: [
+                    { naziv: "Dječja autosjedalica (Standard)", opis: "Dubinsko pranje dječje autosjedalice s ekološkim sredstvima.", trajanje: "45 min", cijena: "20€", slika: "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Krevetić za novorođenčad (Jaje)", opis: "Nježno pranje i dezinfekcija nosiljke/jajeta.", trajanje: "30 min", cijena: "15€", slika: "https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 3 (izmjeni)", opis: "Opis za treću uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 4 (izmjeni)", opis: "Opis za četvrtu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 5 (izmjeni)", opis: "Opis za petu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 6 (izmjeni)", opis: "Opis za šestu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 7 (izmjeni)", opis: "Opis za sedmu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 8 (izmjeni)", opis: "Opis za osmu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 9 (izmjeni)", opis: "Opis za devetu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Autosjedalica 10 (izmjeni)", opis: "Opis za desetu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" }
+                ]
+            },
+            {
+                kategorija: "3. Usisavanje",
+                stavke: [
+                    { naziv: "Usisavanje interijera", opis: "Detaljno usisavanje sjedala i podova.", trajanje: "20 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usisavanje gepeka", opis: "Detaljno usisavanje prtljažnika.", trajanje: "10 min", cijena: "5€", slika: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usisavanje 3 (izmjeni)", opis: "Opis za treću uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usisavanje 4 (izmjeni)", opis: "Opis za četvrtu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Usisavanje 5 (izmjeni)", opis: "Opis za petu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" }
+                ]
+            },
+            {
+                kategorija: "4. Dodaci",
+                stavke: [
+                    { naziv: "Ozonizacija", opis: "Uklanjanje neugodnih mirisa i dezinfekcija klime pomoću plina ozona.", trajanje: "40 min", cijena: "20€", slika: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Dodatak 2 (izmjeni)", opis: "Opis za drugu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Dodatak 3 (izmjeni)", opis: "Opis za treću uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Dodatak 4 (izmjeni)", opis: "Opis za četvrtu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
+                    { naziv: "Dodatak 5 (izmjeni)", opis: "Opis za petu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" }
+                ]
+            }
+        ];
+
+        function generirajUslugeICjenik() {
+            let uslugeHTML = '';
+            let pdfHTML = '';
+
+            uslugeData.forEach((kat) => {
+                // Generiranje za stranicu "Usluge" (Slike i Okviri)
+                uslugeHTML += `
+                <section style="padding: 20px 5% 60px;">
+                    <div class="section-header" style="margin-bottom: 40px; text-align: left;">
+                        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 5px;">${kat.kategorija}</h2>
+                        <div style="height: 3px; width: 80px; background: var(--gradient); border-radius: 2px;"></div>
+                    </div>
+                    <div class="zigzag-container">
+                `;
+
+                // Generiranje za PDF Cjenik (Čista tablica)
+                pdfHTML += `
+                    <h3 style="color: #000; border-bottom: 2px solid #ec4899; padding-bottom: 5px; margin-top: 30px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; font-size: 1.4rem;">${kat.kategorija}</h3>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-bottom: 10px;">
+                `;
+
+                kat.stavke.forEach((stavka, index) => {
+                    const isReverse = index % 2 !== 0 ? 'reverse' : '';
+                    const num = (index + 1).toString().padStart(2, '0') + '.';
+                    
+                    uslugeHTML += `
+                        <div class="zigzag-row ${isReverse}">
+                            <div class="zigzag-content">
+                                <div class="process-num-badge">${num}</div>
+                                <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--pink);">${stavka.naziv}</h3>
+                                <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">${stavka.opis}</p>
+                                <p style="color: var(--purple); font-weight: 600; font-size: 0.9rem;">Trajanje: cca ${stavka.trajanje}</p>
+                            </div>
+                            <div class="zigzag-media">
+                                <div class="slider-box" style="display: flex; align-items: center; justify-content: center; background: #111;">
+                                    <img src="${stavka.slika}" alt="${stavka.naziv}">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    pdfHTML += `
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 12px 0; color: #333; font-weight: 600; width: 75%;">${stavka.naziv}</td>
+                            <td style="padding: 12px 0; text-align: right; color: #ec4899; font-weight: 800; font-size: 1.05rem;">${stavka.cijena}</td>
+                        </tr>
+                    `;
+                });
+
+                uslugeHTML += `</div></section>`;
+                pdfHTML += `</table>`;
+            });
+
+            document.getElementById('usluge-dynamic-container').innerHTML = uslugeHTML;
+            document.getElementById('cjenik-table-body').innerHTML = pdfHTML;
+        }
+
+        // Pokreni funkciju nakon učitavanja
+        generirajUslugeICjenik();
+
+        // Funkcija za preuzimanje PDF-a
+        function generatePDF() {
+            const element = document.getElementById('pdf-cjenik-wrap');
+            const btn = document.querySelector('button[onclick="generatePDF()"]');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "⏳ Generiranje PDF-a...";
+            btn.style.pointerEvents = "none";
+            
+            const opt = {
+                margin:       10,
+                filename:     'Tincek_AutoCare_Cjenik.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerText = originalText;
+                btn.style.pointerEvents = "auto";
+            });
+        }
     </script>
 </body>
 </html>
