@@ -388,6 +388,17 @@
         .g-info h4 { color: var(--pink); font-size: 1.15rem; margin-bottom: 6px; }
         .g-info p { font-size: 0.9rem; color: var(--text-muted); }
 
+        /* --- USLUGE KATEGORIJE GRID --- */
+        .services-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .s-cat-item { border-radius: 18px; overflow: hidden; cursor: pointer; position: relative; border: 1px solid rgba(255,255,255,0.08); background: #1a1a24; transition: 0.3s; display: flex; flex-direction: column; }
+        .s-cat-item:hover { transform: translateY(-5px); border-color: var(--pink); box-shadow: 0 10px 30px rgba(236,72,153,0.2); }
+        .s-cat-img { width: 100%; height: 250px; background: #111; overflow: hidden; }
+        .s-cat-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+        .s-cat-item:hover .s-cat-img img { transform: scale(1.06); }
+        .s-cat-info { padding: 25px 20px; text-align: center; background: #1a1a24; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .s-cat-info h4 { color: var(--pink); font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; }
+        .s-cat-info p { font-size: 0.95rem; color: var(--text-muted); }
+
         /* --- NOVOSTI STRANICA --- */
         .news-page-grid { display: flex; flex-direction: column; gap: 40px; }
         .news-article-card { 
@@ -451,15 +462,15 @@
         .select-wrapper select:focus { border-color: var(--pink); outline: none; }
         .select-wrapper::after { content: '▼'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--pink); font-size: 0.75rem; pointer-events: none; }
 
-        /* --- FOOTER (U milimetar poravnat, centriran s 5 stupaca) --- */
+        /* --- FOOTER (6 stupaca) --- */
         footer {
             background: #000; border-top: 2px solid var(--purple);
             padding: 70px 5% 40px; margin-top: 80px; text-align: center;
         }
         .f-grid {
             display: grid;
-            grid-template-columns: 1fr 1.3fr 1.4fr 1fr 1.2fr;
-            gap: 38px;
+            grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr 1.2fr 1.2fr;
+            gap: 25px;
             max-width: 1500px;
             margin: 0 auto 50px;
             justify-items: center;
@@ -477,7 +488,7 @@
         .f-col h3 {
             color: var(--pink) !important; font-family: 'Montserrat', sans-serif !important;
             font-size: 1.2rem !important; font-weight: 700 !important;
-            margin-bottom: 12px !important; letter-spacing: 0.2px !important; text-align: center !important;
+            margin-bottom: 15px !important; letter-spacing: 0.2px !important; text-align: center !important;
             line-height: 1.2 !important;
         }
         .f-col p, .f-col li { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px; text-align: center !important; line-height: 1.5; font-weight: 400; }
@@ -486,22 +497,32 @@
         .f-contact-block { display: flex; flex-direction: column; gap: 8px; align-items: center; }
         .f-contact-block strong { color: white; font-size: 1.05rem; }
 
-        .f-booking-card {
-            cursor: pointer; border-radius: 16px; overflow: hidden; width: 100%; max-width: 260px;
-            border: 2px solid var(--pink); transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: var(--glow); display: flex; flex-direction: column; align-self: center;
+        /* Novi okviri za Cjenik i Recenzije u footeru */
+        .f-action-card {
+            cursor: pointer; border-radius: 16px; overflow: hidden; width: 100%; max-width: 180px;
+            border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 20px 15px; margin-top: 5px;
         }
-        .f-booking-card img { width: 100%; height: 120px; object-fit: cover; display: block; }
-        .f-booking-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(236, 72, 153, 0.6); }
+        .f-action-card:hover { transform: translateY(-5px); border-color: var(--pink); box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15); }
+        .f-action-card svg { width: 32px; height: 32px; fill: var(--pink); margin-bottom: 12px; }
+        .f-action-card strong { font-size: 1rem; color: white; display: block; margin-bottom: 5px; line-height: 1.2; }
+        .f-action-card span { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
 
         .f-bottom {
-            max-width: 1400px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08);
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+            max-width: 1400px; margin: 0 auto; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px;
+            text-align: center;
         }
-        .counter-box { background: rgba(255,255,255,0.06); padding: 10px 22px; border-radius: 30px; display: flex; align-items: center; gap: 12px; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.15); }
-        .counter-box strong { font-family: 'Montserrat'; font-size: 1.2rem; color: var(--pink); letter-spacing: 3px; }
+        .footer-text-stack { display: flex; flex-direction: column; gap: 4px; }
+        .footer-text-stack p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+        
+        .counter-box { background: #111115; padding: 10px 24px; border-radius: 40px; display: inline-flex; align-items: center; gap: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .counter-box span { color: var(--text-main); font-size: 0.95rem; }
+        .counter-box strong { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; color: var(--pink); letter-spacing: 2px; font-weight: 700; }
 
-        @media (max-width: 1024px) { .f-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1200px) { .f-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
         @media (max-width: 900px) {
             .zigzag-row, .zigzag-row.reverse, .news-article-card, .news-article-card:nth-child(even) { flex-direction: column !important; text-align: left; gap: 25px; padding: 25px; }
             .f-grid { grid-template-columns: 1fr; justify-items: center; text-align: center; }
@@ -921,10 +942,27 @@
         <section>
             <div class="section-header">
                 <h2>Naše <span class="text-gradient">Usluge</span></h2>
-                <p>Pregledajte sve naše detaljne usluge po kategorijama.</p>
+                <p>Odaberite kategoriju za detaljan pregled naših usluga.</p>
+            </div>
+            <div class="services-cat-grid" id="usluge-categories-container">
+                <!-- Kategorije se generiraju ovdje -->
             </div>
         </section>
-        <div id="usluge-dynamic-container"></div>
+    </div>
+
+    <!-- ==================== 2.1 USLUGE DETALJNO ==================== -->
+    <div id="view-service-category" class="page-view">
+        <section>
+            <div style="margin-bottom: 30px;">
+                <button class="btn-primary" onclick="switchView('services')" style="padding: 10px 20px; font-size: 0.9rem;">← Natrag na kategorije</button>
+            </div>
+            <div id="usluge-dynamic-container">
+                <!-- Detalji kategorije se generiraju ovdje -->
+            </div>
+            <div style="margin-top: 40px; text-align: center;">
+                <button class="btn-primary" onclick="switchView('services')" style="padding: 12px 30px;">← Vrati se na usluge</button>
+            </div>
+        </section>
     </div>
 
     <!-- ==================== 2.5 PAKETI ==================== -->
@@ -1256,9 +1294,23 @@
         </section>
     </div>
 
-    <!-- ==================== FOOTER (5 stupaca, centriran) ==================== -->
+    <!-- ==================== FOOTER (6 stupaca, centriran) ==================== -->
+    <!-- ==================== FOOTER (6 stupaca) ==================== -->
     <footer>
         <div class="f-grid">
+            
+            <!-- 1. O NAMA -->
+            <div class="f-col">
+                <div style="width: 100%; max-width: 200px; margin: 3px auto 15px; display: flex; justify-content: center; align-items: center; cursor: pointer;" onclick="switchView('home')">
+                    <img src="logo_tincek-ac.png" alt="Auto-Care Tinček logo" style="width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.08));" />
+                </div>
+                <p style="margin-top: 10px; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+                    <strong style="color: white; display: block; margin-bottom: 4px; font-size: 0.95rem;">Auto-Care Tinček</strong>
+                    Vaš partner u sjaju Vašeg vozila! Vrhunska njega, profesionalni alati i posvećenost detaljima bez kompromisa.
+                </p>
+            </div>
+
+            <!-- 2. IZBORNIK -->
             <div class="f-col">
                 <h3>Izbornik</h3>
                 <ul>
@@ -1268,15 +1320,15 @@
                     <li><a onclick="switchView('pricing')">Cjenik</a></li>
                     <li><a onclick="switchView('news')">Novosti</a></li>
                     <li><a onclick="switchView('gallery')">Radovi</a></li>
-                    <li><a onclick="switchView('testimonials')">Recenzije</a></li>
                     <li><a onclick="switchView('contact')">Kontakt</a></li>
                 </ul>
             </div>
 
+            <!-- 3. KONTAKT -->
             <div class="f-col">
                 <h3>Kontakt</h3>
                 <p><strong>A:</strong> Slavenskog 12, Zagreb</p>
-                <p><strong>T:</strong> +385 9X XXX XXXX</p>
+                <p><strong>T:</strong> +385 91 601 2966</p>
                 <p style="margin-bottom: 15px;"><strong>M:</strong> info@autocaretincek.hr</p>
                 
                 <p><strong>Pon-Pet:</strong> 08:00 - 18:00</p>
@@ -1284,43 +1336,48 @@
                 <p><strong>Ned:</strong> Zatvoreno</p>
             </div>
 
+            <!-- 4. USLUGE -->
             <div class="f-col">
-                <h3>Usluge i Cjenik</h3>
+                <h3>Usluge</h3>
                 <ul>
-                    <li><a onclick="switchView('packages')">Osnovni Detailing (35€)</a></li>
-                    <li><a onclick="switchView('packages')">Kompletno Kemijsko (90€)</a></li>
-                    <li><a onclick="switchView('packages')">Poliranje & Keramika (od 200€)</a></li>
+                    <li><a onclick="switchView('packages')">Osnovni Detailing</a></li>
+                    <li><a onclick="switchView('packages')">Kompletno Kemijsko</a></li>
+                    <li><a onclick="switchView('packages')">Poliranje & Keramika</a></li>
                     <li><a onclick="switchView('services')">Graphene Premaz</a></li>
                     <li><a onclick="switchView('services')">Poliranje Farova</a></li>
                 </ul>
             </div>
 
+            <!-- 5. CJENIK -->
             <div class="f-col">
-                <h3>&nbsp;</h3>
-                <div style="width: 100%; max-width: 220px; margin: 0 auto; display: flex; justify-content: center; align-items: center; cursor: pointer; transform: translateY(-15px);" onclick="switchView('home')">
-                    <img src="logo_tincek-ac.png" alt="Auto-Care Tinček logo" style="width: 100%; height: auto; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.08));" />
+                <h3>Cjenik</h3>
+                <div class="f-action-card" onclick="switchView('pricing')" title="Otvori cjenik usluga">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    <strong>Preuzmi PDF</strong>
+                    <span>Službeni popis i cjenik svih usluga</span>
                 </div>
-                <p style="margin-top: 5px; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
-                    <strong style="color: white; display: block; margin-bottom: 4px; font-size: 0.95rem;">Auto-Care Tinček</strong>
-                    Vaš partner u sjaju Vašeg vozila! Vrhunska njega, profesionalni alati i posvećenost detaljima bez kompromisa.
-                </p>
             </div>
 
+            <!-- 6. RECENZIJE -->
             <div class="f-col">
-                <h3>Naruči se</h3>
-                <div class="f-booking-card" onclick="switchView('booking')" title="Klikni i naruči se odmah">
-                    <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=500&auto=format&fit=crop" alt="">
-                    <div style="padding: 12px; background: var(--gradient); color: white; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; text-align: center;">
-                        Naruči se odmah →
-                    </div>
+                <h3>Recenzije</h3>
+                <div class="f-action-card" onclick="switchView('testimonials')" title="Otvori dojmove kupaca">
+                    <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <strong>Dojmovi kupaca</strong>
+                    <span>Pogledajte iskustva naših klijenata</span>
                 </div>
             </div>
+
         </div>
         
         <div class="f-bottom">
-            <p style="color: var(--text-muted); font-size: 0.95rem;">&copy; 2026 Auto-Care Tinček. Sva prava pridržana. Izrada: Kova-Design.</p>
+            <div class="footer-text-stack">
+                <p>&copy; 2026 Auto-Care Tinček.</p>
+                <p>Sva prava pridržana.</p>
+                <p>Izrada: Kova-Design.</p>
+            </div>
             <div class="counter-box">
-                <span style="color: var(--text-muted);">Posjeta:</span>
+                <span>Posjeta:</span>
                 <strong id="visitor-count">0001</strong>
             </div>
         </div>
@@ -1543,6 +1600,7 @@
         const uslugeData = [
             {
                 kategorija: "1. Kemijsko čišćenje auta",
+                slikaKategorije: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop",
                 stavke: [
                     { naziv: "Kemijsko čišćenje 1 sjedala", opis: "Dubinsko ekstrakcijsko čišćenje jednog sjedala uz uklanjanje mrlja i mirisa.", trajanje: "30 min", cijena: "15€", slika: "https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=600&auto=format&fit=crop" },
                     { naziv: "Kemijsko čišćenje podova", opis: "Temeljito čišćenje podnih obloga vozila ekstrakcijom kako bi se izvukla dubinska prljavština.", trajanje: "45 min", cijena: "25€", slika: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" },
@@ -1558,6 +1616,7 @@
             },
             {
                 kategorija: "2. Kemijsko čišćenje dječjih autosjedalica",
+                slikaKategorije: "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=600&auto=format&fit=crop",
                 stavke: [
                     { naziv: "Dječja autosjedalica (Standard)", opis: "Dubinsko pranje dječje autosjedalice s ekološkim sredstvima.", trajanje: "45 min", cijena: "20€", slika: "https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=600&auto=format&fit=crop" },
                     { naziv: "Krevetić za novorođenčad (Jaje)", opis: "Nježno pranje i dezinfekcija nosiljke/jajeta.", trajanje: "30 min", cijena: "15€", slika: "https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=600&auto=format&fit=crop" },
@@ -1573,6 +1632,7 @@
             },
             {
                 kategorija: "3. Usisavanje",
+                slikaKategorije: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop",
                 stavke: [
                     { naziv: "Usisavanje interijera", opis: "Detaljno usisavanje sjedala i podova.", trajanje: "20 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop" },
                     { naziv: "Usisavanje gepeka", opis: "Detaljno usisavanje prtljažnika.", trajanje: "10 min", cijena: "5€", slika: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" },
@@ -1583,6 +1643,7 @@
             },
             {
                 kategorija: "4. Dodaci",
+                slikaKategorije: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop",
                 stavke: [
                     { naziv: "Ozonizacija", opis: "Uklanjanje neugodnih mirisa i dezinfekcija klime pomoću plina ozona.", trajanje: "40 min", cijena: "20€", slika: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" },
                     { naziv: "Dodatak 2 (izmjeni)", opis: "Opis za drugu uslugu.", trajanje: "30 min", cijena: "10€", slika: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=600&auto=format&fit=crop" },
@@ -1594,46 +1655,29 @@
         ];
 
         function generirajUslugeICjenik() {
-            let uslugeHTML = '';
+            let kategorijeHTML = '';
             let pdfHTML = '';
 
-            uslugeData.forEach((kat) => {
-                // Generiranje za stranicu "Usluge" (Slike i Okviri)
-                uslugeHTML += `
-                <section style="padding: 20px 5% 60px;">
-                    <div class="section-header" style="margin-bottom: 40px; text-align: left;">
-                        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 5px;">${kat.kategorija}</h2>
-                        <div style="height: 3px; width: 80px; background: var(--gradient); border-radius: 2px;"></div>
+            uslugeData.forEach((kat, index) => {
+                // Generiranje kartica za kategorije na glavnoj stranici Usluge
+                let nazivBezBroja = kat.kategorija.replace(/^\d+\.\s*/, '');
+                kategorijeHTML += `
+                    <div class="s-cat-item" onclick="otvoriKategoriju(${index})">
+                        <div class="s-cat-img"><img src="${kat.slikaKategorije}" alt="${nazivBezBroja}"></div>
+                        <div class="s-cat-info">
+                            <h4>${nazivBezBroja}</h4>
+                            <p>Klikni za detalje</p>
+                        </div>
                     </div>
-                    <div class="zigzag-container">
                 `;
 
-                // Generiranje za PDF Cjenik (Čista tablica)
+                // Generiranje za PDF Cjenik (Čista tablica) ostaje isto
                 pdfHTML += `
                     <h3 style="color: #000; border-bottom: 2px solid #ec4899; padding-bottom: 5px; margin-top: 30px; margin-bottom: 15px; font-family: 'Montserrat', sans-serif; font-size: 1.4rem;">${kat.kategorija}</h3>
                     <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-bottom: 10px;">
                 `;
 
-                kat.stavke.forEach((stavka, index) => {
-                    const isReverse = index % 2 !== 0 ? 'reverse' : '';
-                    const num = (index + 1).toString().padStart(2, '0') + '.';
-                    
-                    uslugeHTML += `
-                        <div class="zigzag-row ${isReverse}">
-                            <div class="zigzag-content">
-                                <div class="process-num-badge">${num}</div>
-                                <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--pink);">${stavka.naziv}</h3>
-                                <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">${stavka.opis}</p>
-                                <p style="color: var(--purple); font-weight: 600; font-size: 0.9rem;">Trajanje: cca ${stavka.trajanje}</p>
-                            </div>
-                            <div class="zigzag-media">
-                                <div class="slider-box" style="display: flex; align-items: center; justify-content: center; background: #111;">
-                                    <img src="${stavka.slika}" alt="${stavka.naziv}">
-                                </div>
-                            </div>
-                        </div>
-                    `;
-
+                kat.stavke.forEach((stavka) => {
                     pdfHTML += `
                         <tr style="border-bottom: 1px solid #eee;">
                             <td style="padding: 12px 0; color: #333; font-weight: 600; width: 75%;">${stavka.naziv}</td>
@@ -1642,12 +1686,49 @@
                     `;
                 });
 
-                uslugeHTML += `</div></section>`;
                 pdfHTML += `</table>`;
             });
 
-            document.getElementById('usluge-dynamic-container').innerHTML = uslugeHTML;
+            document.getElementById('usluge-categories-container').innerHTML = kategorijeHTML;
             document.getElementById('cjenik-table-body').innerHTML = pdfHTML;
+        }
+
+        function otvoriKategoriju(index) {
+            const kat = uslugeData[index];
+            if (!kat) return;
+
+            let detaljiHTML = `
+                <div class="section-header" style="margin-bottom: 40px; text-align: left;">
+                    <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 5px;">${kat.kategorija.replace(/^\d+\.\s*/, '')}</h2>
+                    <div style="height: 3px; width: 80px; background: var(--gradient); border-radius: 2px;"></div>
+                </div>
+                <div class="zigzag-container">
+            `;
+
+            kat.stavke.forEach((stavka, i) => {
+                const isReverse = i % 2 !== 0 ? 'reverse' : '';
+                const num = (i + 1).toString().padStart(2, '0') + '.';
+                
+                detaljiHTML += `
+                    <div class="zigzag-row ${isReverse}">
+                        <div class="zigzag-content">
+                            <div class="process-num-badge">${num}</div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--pink);">${stavka.naziv}</h3>
+                            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 12px;">${stavka.opis}</p>
+                            <p style="color: var(--purple); font-weight: 600; font-size: 0.9rem;">Trajanje: cca ${stavka.trajanje} <span style="color: var(--pink); margin-left: 10px;">Cijena: ${stavka.cijena}</span></p>
+                        </div>
+                        <div class="zigzag-media">
+                            <div class="slider-box" style="display: flex; align-items: center; justify-content: center; background: #111;">
+                                <img src="${stavka.slika}" alt="${stavka.naziv}">
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            detaljiHTML += `</div>`;
+            document.getElementById('usluge-dynamic-container').innerHTML = detaljiHTML;
+            switchView('service-category');
         }
 
         // Pokreni funkciju nakon učitavanja
